@@ -49,8 +49,7 @@ void flower_on(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		HAL_GPIO_WritePin(GPIOB, 0x08 >> i, 1);
-		HAL_GPIO_WritePin(GPIOB, 0x10 << i, 1);
+		HAL_GPIO_WritePin(GPIOB, 0x08 >> i | 0x10 << i, 1);
 		HAL_Delay(200);
 	}
 }
@@ -59,8 +58,7 @@ void flower_off(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		HAL_GPIO_WritePin(GPIOB, 0x01 << i, 0);
-		HAL_GPIO_WritePin(GPIOB, 0x80 >> i, 0);
+		HAL_GPIO_WritePin(GPIOB, 0x01 << i | 0x80 >> i, 0);
 		HAL_Delay(200);
 	}
 }
