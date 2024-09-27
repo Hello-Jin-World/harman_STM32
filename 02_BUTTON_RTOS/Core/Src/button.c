@@ -7,21 +7,20 @@ unsigned char button_status[BUTTON_NUMBER] = {
 		BUTTON_RELEASE
 };
 
-
-
+//When press the button, turn on led 1 step. If led all on, turn off 1 step. loop
 void button_check(void)
 {
-	static int ledon = 0;
+	static int led_on = 0;
 	// check one click
 	if (get_button(GPIOC, GPIO_PIN_13, BUTTON0) == BUTTON_PRESS)
 	{
-		ledon %= 16;
-		HAL_GPIO_WritePin(GPIOB, 0x01 << ledon, 1);
-		ledon++;
+		led_on %= 16;
+		HAL_GPIO_WritePin(GPIOB, 0x01 << led_on, 1);
+		led_on++;
 
-		if (ledon > 8)
+		if (led_on > 8)
 		{
-			HAL_GPIO_WritePin(GPIOB, 0x80 >> (ledon+6)%15, 0);
+			HAL_GPIO_WritePin(GPIOB, 0x80 >> (led_on+6)%15, 0);
 		}
 
 	}
