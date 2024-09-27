@@ -9,6 +9,12 @@ void led_keep_on_down(void);
 void led_main(void);
 void flower_on(void);
 void flower_off(void);
+void ledbar0_toggle(void);
+
+void ledbar0_toggle(void)
+{
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+}
 
 
 void led_all_on(void)
