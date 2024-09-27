@@ -1,3 +1,4 @@
+"./Core/Src/button.o"
 "./Core/Src/freertos.o"
 "./Core/Src/led.o"
 "./Core/Src/main.o"

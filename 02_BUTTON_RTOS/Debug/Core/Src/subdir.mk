@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/button.c \
 ../Core/Src/freertos.c \
 ../Core/Src/led.c \
 ../Core/Src/main.c \
@@ -16,6 +17,7 @@ C_SRCS += \
 ../Core/Src/system_stm32f4xx.c 
 
 OBJS += \
+./Core/Src/button.o \
 ./Core/Src/freertos.o \
 ./Core/Src/led.o \
 ./Core/Src/main.o \
@@ -27,6 +29,7 @@ OBJS += \
 ./Core/Src/system_stm32f4xx.o 
 
 C_DEPS += \
+./Core/Src/button.d \
 ./Core/Src/freertos.d \
 ./Core/Src/led.d \
 ./Core/Src/main.d \

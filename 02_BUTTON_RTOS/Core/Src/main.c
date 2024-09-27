@@ -79,6 +79,7 @@ void StartTask02(void *argument);
 /* USER CODE BEGIN PFP */
 extern void led_main(void);
 extern void ledbar0_toggle(void);
+extern void button_check(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -313,6 +314,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  button_check();
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -331,7 +333,7 @@ void StartTask01(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	ledbar0_toggle();
+	//ledbar0_toggle();
     osDelay(500);
   }
   /* USER CODE END StartTask01 */
