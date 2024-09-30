@@ -13,12 +13,15 @@ void ledbar0_toggle(void);
 
 void (*fp1[])() =
 {
-		led_up_on,
-		led_down_on
+	led_up_on,
+	led_down_on,
+	flower_on,
+	flower_off
 };
 
-extern volatile int TIM10_1ms_counter2;  // ADD_PSJ_0930
 extern volatile int TIM10_1ms_counter1;  // ADD_PSJ_0930
+
+int fp1_index = 0;
 
 void ledbar0_toggle(void)
 {
@@ -49,6 +52,10 @@ void led_up_on(void)
 		TIM10_1ms_counter1 = 0;
 		i++;
 		led_all_off();
+		if (i >= 8)
+		{
+			fp1_index = 1;
+		}
 		i %= 8;
 	}
 }
@@ -75,6 +82,10 @@ void led_down_on(void)
 		TIM10_1ms_counter1 = 0;
 		led_all_off();
 		i++;
+		if (i >= 8)
+		{
+			fp1_index = 2;
+		}
 		i %= 8;
 	}
 
@@ -113,6 +124,23 @@ void led_keep_on_down(void)
 
 void flower_on(void)
 {
+#if 1
+	static int i = 0;
+	HAL_GPIO_WritePin(GPIOB, 0x08 >> i | 0x10 << i, 1);
+
+	if (TIM10_1ms_counter1 >= 200)
+	{
+		TIM10_1ms_counter1 = 0;
+		i++;
+		if (i >= 4)
+		{
+			led_all_on();
+			fp1_index = 3;
+		}
+		i %= 4;
+	}
+}
+#else
 	for (int i = 0; i < 4; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x08 >> i | 0x10 << i, 1);
@@ -121,9 +149,27 @@ void flower_on(void)
 	led_all_off();
 	HAL_Delay(50);
 }
+#endif
 
 void flower_off(void)
 {
+#if 1
+	static int i = 0;
+	HAL_GPIO_WritePin(GPIOB, 0x01 << i | 0x80 >> i, 0);
+
+	if (TIM10_1ms_counter1 >= 200)
+	{
+		TIM10_1ms_counter1 = 0;
+		i++;
+		if (i >= 4)
+		{
+			led_all_off();
+			fp1_index = 0;
+		}
+		i %= 4;
+	}
+}
+#else
 	for (int i = 0; i < 4; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x01 << i | 0x80 >> i, 0);
@@ -132,6 +178,7 @@ void flower_off(void)
 	led_all_on();
 	HAL_Delay(50);
 }
+#endif
 
 // per 300ms
 // 1st : led_all_on
@@ -140,9 +187,9 @@ void flower_off(void)
 
 void led_main(void)
 {
-	static int i = 0;
-	fp1[i]();
+	fp1[fp1_index]();
 
+	/*
 	if (TIM10_1ms_counter2 >= 1600 && TIM10_1ms_counter2 < 3200)
 	{
 		i = 1;
@@ -152,7 +199,7 @@ void led_main(void)
 		TIM10_1ms_counter2 = 0;
 		i = 0;
 	}
-
+	*/
 	/*
 	static int num = 0;
 	num %= 8;
