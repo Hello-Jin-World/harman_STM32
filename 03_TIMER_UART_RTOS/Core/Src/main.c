@@ -69,6 +69,7 @@ const osThreadAttr_t myTask02_attributes = {
 /* USER CODE BEGIN PV */
 volatile int TIM10_1ms_counter = 0;  // ADD_PSJ_0930
 volatile int TIM10_1ms_counter1 = 0;
+volatile int TIM10_1ms_counter2 = 0;  // ADD_PSJ_0930
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -396,11 +397,12 @@ void StartTask02(void *argument)
 	for(;;)
 	{
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
+		/*
 		if( TIM10_1ms_counter >= 50)
 		{
 			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 			TIM10_1ms_counter = 0;
-		}
+		}*/
 		led_main();
 		osDelay(1);
 	}
@@ -428,6 +430,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM10) { // add PSJ 0930
       TIM10_1ms_counter++;
       TIM10_1ms_counter1++;
+      TIM10_1ms_counter2++;
     }
   /* USER CODE END Callback 1 */
 }
