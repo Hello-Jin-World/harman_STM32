@@ -11,7 +11,7 @@ void flower_on(void);
 void flower_off(void);
 void ledbar0_toggle(void);
 
-
+extern volatile int TIM10_1ms_counter1;  // ADD_PSJ_0930
 
 void ledbar0_toggle(void)
 {
@@ -95,19 +95,20 @@ void flower_off(void)
 	HAL_Delay(50);
 }
 
+// per 300ms
+// 1st : led_all_on
+// 2nd : led_all_off
+// 3rd : Demo board led toggle
+
 void led_main(void)
 {
-	while(1)
+	static int num = 0;
+	num %= 8;
+	HAL_GPIO_WritePin(GPIOB, 0x01 << num, 1);
+	if (TIM10_1ms_counter1 >= 50)
 	{
-		led_all_on();
-		HAL_Delay(500);
+		num++;
+		TIM10_1ms_counter1 = 0;
 		led_all_off();
-		HAL_Delay(500);
-		led_up_on();
-		led_down_on();
-		flower_on();
-		flower_off();
-		led_keep_on_up();
-		led_keep_on_down();
 	}
 }

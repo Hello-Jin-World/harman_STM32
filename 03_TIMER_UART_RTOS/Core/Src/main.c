@@ -41,6 +41,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim10;
+
 UART_HandleTypeDef huart2;
 
 /* Definitions for defaultTask */
@@ -65,13 +67,15 @@ const osThreadAttr_t myTask02_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* USER CODE BEGIN PV */
-
+volatile int TIM10_1ms_counter = 0;  // ADD_PSJ_0930
+volatile int TIM10_1ms_counter1 = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM10_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask01(void *argument);
 void StartTask02(void *argument);
@@ -116,7 +120,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim10); // ADD_0930
   //led_main();
   /* USER CODE END 2 */
 
@@ -195,9 +201,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 16;
-  RCC_OscInitStruct.PLL.PLLN = 336;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLN = 84;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -216,6 +222,37 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM10 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM10_Init(void)
+{
+
+  /* USER CODE BEGIN TIM10_Init 0 */
+
+  /* USER CODE END TIM10_Init 0 */
+
+  /* USER CODE BEGIN TIM10_Init 1 */
+
+  /* USER CODE END TIM10_Init 1 */
+  htim10.Instance = TIM10;
+  htim10.Init.Prescaler = 84-1;
+  htim10.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim10.Init.Period = 1000-1;
+  htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim10.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim10) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM10_Init 2 */
+
+  /* USER CODE END TIM10_Init 2 */
+
 }
 
 /**
@@ -320,7 +357,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	button_check();
+	//button_check();
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -356,11 +393,17 @@ void StartTask02(void *argument)
 {
   /* USER CODE BEGIN StartTask02 */
   /* Infinite loop */
-  for(;;)
-  {
-	//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
-    osDelay(1);
-  }
+	for(;;)
+	{
+		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
+		if( TIM10_1ms_counter >= 50)
+		{
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+			TIM10_1ms_counter = 0;
+		}
+		led_main();
+		osDelay(1);
+	}
   /* USER CODE END StartTask02 */
 }
 
@@ -372,6 +415,7 @@ void StartTask02(void *argument)
   * @param  htim : TIM handle
   * @retval None
   */
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
@@ -381,7 +425,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+  if (htim->Instance == TIM10) { // add PSJ 0930
+      TIM10_1ms_counter++;
+      TIM10_1ms_counter1++;
+    }
   /* USER CODE END Callback 1 */
 }
 
