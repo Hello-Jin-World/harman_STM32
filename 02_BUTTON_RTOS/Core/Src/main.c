@@ -279,6 +279,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : BUTTON0_Pin BUTTON1_Pin BUTTON2_Pin BUTTON3_Pin */
+  GPIO_InitStruct.Pin = BUTTON0_Pin|BUTTON1_Pin|BUTTON2_Pin|BUTTON3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -314,7 +320,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  button_check();
+	button_check();
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -334,7 +340,7 @@ void StartTask01(void *argument)
   for(;;)
   {
 	//ledbar0_toggle();
-    osDelay(500);
+    osDelay(1);
   }
   /* USER CODE END StartTask01 */
 }
@@ -352,8 +358,8 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
-    osDelay(200);
+	//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
+    osDelay(1);
   }
   /* USER CODE END StartTask02 */
 }

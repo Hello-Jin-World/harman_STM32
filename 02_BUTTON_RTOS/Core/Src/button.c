@@ -1,18 +1,71 @@
 #include "button.h"
+#include "led.h"
 
 void button_check(void);
 int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
 
-unsigned char button_status[BUTTON_NUMBER] = {
-		BUTTON_RELEASE
+void (*fp[])() =
+{
+	led_all_off,
+	led_all_on,
+	led_up_on,
+	led_down_on,
+	led_keep_on_up,
+	led_keep_on_down,
+	flower_on,
+	flower_off,
+
 };
+
+unsigned char button_status[BUTTON_NUMBER] = {
+		BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE
+};
+
 
 //When press the button, turn on led 1 step. If led all on, turn off 1 step. loop
 void button_check(void)
 {
 	static int led_on = 0;
+	static int mode = 0;
+
+	fp[mode]();
+
+	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
+	{
+		mode++;
+		mode %= 4;
+	}
+	else if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
+	{
+		if (mode == 4)
+		{
+			mode = 5;
+		}
+		else
+		{
+			mode = 4;
+		}
+
+	}
+	else if (get_button(GPIOC, GPIO_PIN_2, BUTTON2) == BUTTON_PRESS)
+	{
+
+		if (mode != 6)
+		{
+			mode = 6;
+		}
+		else if (mode == 6)
+		{
+			mode = 7;
+		}
+	}
+	else if (get_button(GPIOC, GPIO_PIN_3, BUTTON3) == BUTTON_PRESS)
+	{
+		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+	}
 	// check one click
-	if (get_button(GPIOC, GPIO_PIN_13, BUTTON0) == BUTTON_PRESS)
+
+	if (get_button(GPIOC, GPIO_PIN_13, BUTTON4) == BUTTON_PRESS)
 	{
 		led_on %= 16;
 		HAL_GPIO_WritePin(GPIOB, 0x01 << led_on, 1);
@@ -22,7 +75,6 @@ void button_check(void)
 		{
 			HAL_GPIO_WritePin(GPIOB, 0x80 >> (led_on+6)%15, 0);
 		}
-
 	}
 }
 // if one click status, return 1

@@ -1,15 +1,17 @@
 #include "led.h"
 
+void led_main(void);
 void led_all_on(void);
 void led_all_off(void);
 void led_up_on(void);
 void led_down_on(void);
 void led_keep_on_up(void);
 void led_keep_on_down(void);
-void led_main(void);
 void flower_on(void);
 void flower_off(void);
 void ledbar0_toggle(void);
+
+
 
 void ledbar0_toggle(void)
 {
@@ -35,10 +37,8 @@ void led_up_on(void)
 	{
 		led_all_off();
 		HAL_GPIO_WritePin(GPIOB, 0x01 << i, 1);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
-	led_all_off();
-	HAL_Delay(200);
 }
 
 void led_down_on(void)
@@ -47,10 +47,8 @@ void led_down_on(void)
 	{
 		led_all_off();
 		HAL_GPIO_WritePin(GPIOB, 0x80 >> i, 1);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
-	led_all_off();
-	HAL_Delay(200);
 }
 
 void led_keep_on_up(void)
@@ -58,9 +56,10 @@ void led_keep_on_up(void)
 	for (int i = 0; i < 8; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x01 << i, 1);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
-	HAL_Delay(200);
+	led_all_off();
+	HAL_Delay(50);
 }
 
 void led_keep_on_down(void)
@@ -68,9 +67,10 @@ void led_keep_on_down(void)
 	for (int i = 0; i < 8; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x80 >> i, 0);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
-	HAL_Delay(200);
+	led_all_on();
+	HAL_Delay(50);
 }
 
 void flower_on(void)
@@ -78,8 +78,10 @@ void flower_on(void)
 	for (int i = 0; i < 4; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x08 >> i | 0x10 << i, 1);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
+	led_all_off();
+	HAL_Delay(50);
 }
 
 void flower_off(void)
@@ -87,15 +89,16 @@ void flower_off(void)
 	for (int i = 0; i < 4; i++)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0x01 << i | 0x80 >> i, 0);
-		HAL_Delay(200);
+		HAL_Delay(50);
 	}
+	led_all_on();
+	HAL_Delay(50);
 }
 
 void led_main(void)
 {
 	while(1)
 	{
-		/*
 		led_all_on();
 		HAL_Delay(500);
 		led_all_off();
@@ -104,7 +107,6 @@ void led_main(void)
 		led_down_on();
 		flower_on();
 		flower_off();
-		*/
 		led_keep_on_up();
 		led_keep_on_down();
 	}
