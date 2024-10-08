@@ -56,7 +56,7 @@ void get_rtc_date_time(void)
 // setrtc241008154500
 // setrtcYYMMDDhhmmss
 // date_time get 241008154500's address
-#if 0
+#if 1
 void set_rtc(char *date_time)
 {
 	char YY[4], MM[4], DD[4], h[4], m[4], s[4];
