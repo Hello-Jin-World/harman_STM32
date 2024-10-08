@@ -69,6 +69,7 @@ const osThreadAttr_t myTask02_attributes = {
 /* USER CODE BEGIN PV */
 volatile int TIM10_1ms_counter = 0;  // ADD_PSJ_0930
 volatile int TIM10_1ms_counter1 = 0;
+uint8_t rx_data;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -84,11 +85,33 @@ void StartTask02(void *argument);
 extern void led_main(void);
 extern void ledbar0_toggle(void);
 extern void button_check(void);
+extern void pc_command_processing(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+//------------ printf start -----------------------
+#ifdef __GNUC__    // Add for printf
+/* With GCC, small printf (option LD Linker->Libraries->Small printf
+   set to 'Yes') calls __io_putchar() */
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+/**
+  * @brief  Retargets the C library printf function to the USART.
+  * @param  None
+  * @retval None
+  */
+PUTCHAR_PROTOTYPE   // Add for printf
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART2 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
 
+  return ch;
+}
+//-------------------- printf end --------------------
 /* USER CODE END 0 */
 
 /**
@@ -123,7 +146,9 @@ int main(void)
   MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim10); // ADD_0930
-  //led_main();
+  HAL_UART_Receive_IT(&huart2, &rx_data, 1);
+//printf("HAL_TIM_Base_Start_IT !!!\n");
+//led_main();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -271,7 +296,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -357,6 +382,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
 	//button_check();
     osDelay(1);
   }
@@ -396,13 +422,14 @@ void StartTask02(void *argument)
 	for(;;)
 	{
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
-		/*
+
 		if( TIM10_1ms_counter >= 50)
 		{
 			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 			TIM10_1ms_counter = 0;
-		}*/
-		led_main();
+		}
+		pc_command_processing();
+		//led_main();
 		osDelay(1);
 	}
   /* USER CODE END StartTask02 */
@@ -416,7 +443,6 @@ void StartTask02(void *argument)
   * @param  htim : TIM handle
   * @retval None
   */
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */

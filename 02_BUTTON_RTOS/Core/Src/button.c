@@ -80,7 +80,7 @@ void button_check(void)
 // if one click status, return 1
 int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num) // ex) GPIOC, GPIO_PIN_13, 0
 {
-	int state;
+	int state; // store in register
 
 	state = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin); // active : 0, inactive : 1
 	if (state == BUTTON_PRESS && button_status[button_num] == BUTTON_RELEASE)

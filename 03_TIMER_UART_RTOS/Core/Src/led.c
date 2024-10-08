@@ -47,7 +47,7 @@ void led_up_on(void)
 	static int i = 0;
 	HAL_GPIO_WritePin(GPIOB, 0x01 << i, 1);
 
-	if (TIM10_1ms_counter1 >= 200)
+	if (TIM10_1ms_counter1 >= 100)
 	{
 		TIM10_1ms_counter1 = 0;
 		i++;
@@ -77,7 +77,7 @@ void led_down_on(void)
 
 	HAL_GPIO_WritePin(GPIOB, 0x80 >> i, 1);
 
-	if (TIM10_1ms_counter1 >= 200)
+	if (TIM10_1ms_counter1 >= 100)
 	{
 		TIM10_1ms_counter1 = 0;
 		led_all_off();
@@ -128,14 +128,15 @@ void flower_on(void)
 	static int i = 0;
 	HAL_GPIO_WritePin(GPIOB, 0x08 >> i | 0x10 << i, 1);
 
-	if (TIM10_1ms_counter1 >= 200)
+	if (TIM10_1ms_counter1 >= 100)
 	{
 		TIM10_1ms_counter1 = 0;
 		i++;
 		if (i >= 4)
 		{
-			led_all_on();
-			fp1_index = 3;
+			led_all_off();
+//			fp1_index = 3;
+			i=0;
 		}
 		i %= 4;
 	}
@@ -157,14 +158,15 @@ void flower_off(void)
 	static int i = 0;
 	HAL_GPIO_WritePin(GPIOB, 0x01 << i | 0x80 >> i, 0);
 
-	if (TIM10_1ms_counter1 >= 200)
+	if (TIM10_1ms_counter1 >= 100)
 	{
 		TIM10_1ms_counter1 = 0;
 		i++;
 		if (i >= 4)
 		{
-			led_all_off();
-			fp1_index = 0;
+			led_all_on();
+//			fp1_index = 0;
+			i=0;
 		}
 		i %= 4;
 	}

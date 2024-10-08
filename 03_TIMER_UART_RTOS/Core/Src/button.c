@@ -10,11 +10,10 @@ void (*fp[])() =
 	led_all_on,
 	led_up_on,
 	led_down_on,
-	led_keep_on_up,
-	led_keep_on_down,
 	flower_on,
 	flower_off,
-
+	led_keep_on_up,
+	led_keep_on_down
 };
 
 unsigned char button_status[BUTTON_NUMBER] = {
