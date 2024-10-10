@@ -1,5 +1,6 @@
 #include "main.h"
 #include "DHT11.h"
+#include "extern.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -8,6 +9,7 @@
 // extern TIM_HandleTypeDef htim2;
 extern void delay_us (unsigned int us);
 extern volatile int TIM10_DHT11_counter;
+extern uint8_t pdht11; // default -> print dht11
 
 void DHT11_main(void);
 void DHT11_processing(void);
@@ -35,6 +37,7 @@ void DHT11_main(void)
 		HAL_GPIO_WritePin(DHT11_PORT, DHT11_DATA_RIN, GPIO_PIN_SET);
 		printf("[Tmp]%d\n",(int)i_Tmp);
 		printf("[Wet]%d\n",(int)i_RH);
+
 		// FND_Update(i_Tmp*100 + i_RH);
 		HAL_Delay(1500);
 	}
@@ -59,8 +62,12 @@ void DHT11_processing(void)
 
 		DHT11_DataLine_Output();
 		HAL_GPIO_WritePin(DHT11_PORT, DHT11_DATA_RIN, GPIO_PIN_SET);
-		printf("[Tmp]%d\n",(int)i_Tmp);
-		printf("[Wet]%d\n",(int)i_RH);
+		if (pdht11)
+		{
+			printf("[Tmp]%d\n",(int)i_Tmp);
+			printf("[Wet]%d\n",(int)i_RH);
+
+		}
 	}
 }
 

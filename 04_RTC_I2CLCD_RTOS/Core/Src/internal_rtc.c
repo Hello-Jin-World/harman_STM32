@@ -2,12 +2,12 @@
 #include <string.h> // strcry strncmp ...
 #include <stdlib.h> // atoi itoa ...
 
+#include "extern.h"
+
 void get_rtc_date_time(void);
 void set_rtc(char *date_time);
 unsigned char dec2bcd(unsigned char byte);
 unsigned char bcd2dec(unsigned char byte);
-
-extern RTC_HandleTypeDef hrtc;
 
 RTC_TimeTypeDef sTime = {0}; // Time Information
 RTC_DateTypeDef sDate = {0}; // Date Information
@@ -39,15 +39,34 @@ unsigned char dec2bcd(unsigned char byte)
 void get_rtc_date_time(void)
 {
 	static RTC_TimeTypeDef oldTime = {0};
+	char lcd_buff[40];
 
 	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
 	HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
 
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
-		// Format -> YYYY-MM-DD HH:mm:ss
-		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+		if (pdatetime) // equal -> if (pdatetime >= 1)
+		{
+			// Format -> YYYY-MM-DD HH:mm:ss
+			printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+
+#if 1 // first line : date, second line : time
+			sprintf(lcd_buff, "%2d-%2d-%2d", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date));
+			move_cursor(0, 0);
+			lcd_string(lcd_buff);
+			sprintf(lcd_buff, "%2d:%2d:%2d", bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+			move_cursor(1, 0);
+			lcd_string(lcd_buff);
+#else
+			sprintf(lcd_buff, "%2d-%2d-%2d%2d:%2d:%2d\n", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+
+			move_cursor(0, 0);
+			lcd_string(lcd_buff);
+#endif
+		}
 
 		oldTime.Seconds = sTime.Seconds; // update Second
 	}

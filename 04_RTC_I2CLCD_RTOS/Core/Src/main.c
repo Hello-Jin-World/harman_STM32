@@ -41,6 +41,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+I2C_HandleTypeDef hi2c1;
+
 RTC_HandleTypeDef hrtc;
 
 TIM_HandleTypeDef htim2;
@@ -83,6 +85,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_TIM10_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_RTC_Init(void);
+static void MX_I2C1_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask01(void *argument);
 void StartTask02(void *argument);
@@ -97,6 +100,8 @@ extern void delay_us(unsigned int us);
 extern void DHT11_processing(void);
 extern void DHT11_Init(void);
 extern void get_rtc_date_time(void);
+//extern void i2c_lcd_main(void);
+extern void i2c_lcd_init(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -157,13 +162,16 @@ int main(void)
   MX_TIM10_Init();
   MX_TIM2_Init();
   MX_RTC_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim10); // ADD_0930
   HAL_TIM_Base_Start_IT(&htim2); // ADD_0930
   HAL_UART_Receive_IT(&huart2, &rx_data, 1);
 printf("HAL_TIM_Base_Start_IT !!!\n");
 DHT11_Init();
-//led_main();
+i2c_lcd_init();
+//i2c_lcd_main(); // for checking LCD operation temporary.
+//led_main(); // for checking LED operation temporary.
 //DHT11_main(); // for checking DHT11 operation temporary.
   /* USER CODE END 2 */
 
@@ -267,6 +275,40 @@ void SystemClock_Config(void)
 }
 
 /**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
   * @brief RTC Initialization Function
   * @param None
   * @retval None
@@ -316,7 +358,7 @@ static void MX_RTC_Init(void)
   sDate.WeekDay = RTC_WEEKDAY_TUESDAY;
   sDate.Month = RTC_MONTH_OCTOBER;
   sDate.Date = 0x8;
-  sDate.Year = 0x24;
+  sDate.Year = 0x0;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
   {
@@ -507,7 +549,7 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
 	//button_check();
-	//DHT11_processing();
+	DHT11_processing();
     osDelay(1);
   }
   /* USER CODE END 5 */

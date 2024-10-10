@@ -2,6 +2,8 @@
 #include "led.h"
 #include <string.h>
 
+#define MESSAGE_NUMBER 2
+
 extern void (*fp[])();
 extern void set_rtc(char *date_time);
 
@@ -9,6 +11,18 @@ void pc_command_processing();
 
 extern UART_HandleTypeDef huart2;
 extern uint8_t rx_data;
+
+uint8_t pdht11 = 1; // default -> print dht11
+uint8_t pdatetime = 1; // default -> print datetime
+uint8_t status = 1;
+
+void printf_help(void);
+
+char help_cmd[][50] =
+{
+		"pdht11 : print dht11 debug message.",
+		"pdatetime : print date&time debug message."
+};
 
 //int toggle_full = 0;
 
@@ -86,6 +100,25 @@ void pc_command_processing(void)
 		{
 			set_rtc(&rx_buffer[front][6]); // send from 6 room
 		}
+		else if(strncmp(rx_buffer[front], "pdatetime", strlen("pdatetime")) == 0)
+		{
+			pdatetime = !pdatetime;
+		}
+		else if(strncmp(rx_buffer[front], "pdht11", strlen("pdht11")) == 0)
+		{
+			pdht11 = !pdht11;
+		}
+		else if(strncmp(rx_buffer[front], "help", strlen("help")) == 0)
+		{
+			printf_help();
+		}
+		else if(strncmp(rx_buffer[front], "status", strlen("status")) == 0)
+		{
+			printf("pdht11 : ");
+			status_cmd(pdht11);
+			printf("pdatetime : ");
+			status_cmd(pdatetime);
+		}
 		front++;
 		front %= COMMAND_NUMBER;
 		// add queue full check logic
@@ -98,3 +131,22 @@ void pc_command_processing(void)
 
 }
 
+void printf_help(void)
+{
+	for (int i = 0; i < MESSAGE_NUMBER; i++)
+	{
+		printf("%s\n", help_cmd[i]);  // help_cmd[i] -> &help_cmd[i][0]
+	}
+}
+
+void status_cmd(int *status)
+{
+	if (status)
+	{
+		printf("on\n");
+	}
+	else
+	{
+		printf("off\n");
+	}
+}
