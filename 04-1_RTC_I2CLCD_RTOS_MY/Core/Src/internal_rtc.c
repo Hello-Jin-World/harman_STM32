@@ -195,10 +195,16 @@ void run_mode(void)
 	{
 		SW_counter = 0;
 		sec++;
+		if (sec == 60)
+		{
+			min++;
+			min %= 60;
+		}
 		sec %= 60;
 	}
-	ssec = SW_counter / 16;
-	ssec %= 60;
+
+	ssec = SW_counter / 10;
+	ssec %= 100;
 
 	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
 	{
@@ -209,7 +215,6 @@ void run_mode(void)
 // setrtc241008154500
 // setrtcYYMMDDhhmmss
 // date_time get 241008154500's address
-#if 1
 void set_rtc(char *date_time)
 {
 	char YY[4], MM[4], DD[4], h[4], m[4], s[4];
@@ -232,27 +237,4 @@ void set_rtc(char *date_time)
 
 	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
 	HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
-
-
 }
-#else
-void set_rtc(char *date_time)
-{
-	char date_infor[13];
-	int YY, MM, DD, h, m, s;
-	strncpy(date_infor, date_time, 12);
-	date_infor[12] = '\0';
-	sscanf(date_infor, "%d d% %d %d %d %d", YY, MM, DD, h, m, s);
-
-	sDate.Year = dec2bcd(YY);
-	sDate.Month = dec2bcd(MM);
-	sDate.Date = dec2bcd(DD);
-
-	sTime.Hours = dec2bcd(h);
-	sTime.Minutes = dec2bcd(m);
-	sTime.Seconds = dec2bcd(s);
-
-	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
-	HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
-}
-#endif

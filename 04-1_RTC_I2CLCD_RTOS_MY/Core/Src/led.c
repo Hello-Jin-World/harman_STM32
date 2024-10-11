@@ -10,20 +10,11 @@ void led_keep_on_down(void);
 void flower_on(void);
 void flower_off(void);
 void ledbar0_toggle(void);
+void sw_clock_led(void);
 
 extern int clock_sw_index;
 extern int clock_run;
 extern volatile int TIM10_1ms_counter1;  // ADD_PSJ_0930
-
-void (*fp1[])() =
-{
-	led_up_on,
-	led_down_on,
-	flower_on,
-	flower_off
-};
-
-int fp1_index = 0;
 
 void sw_clock_led(void)
 {
@@ -42,11 +33,20 @@ void sw_clock_led(void)
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
 		}
 
-
 		TIM10_1ms_counter1 = 0;
 	}
 
 }
+
+void (*fp1[])() =
+{
+	led_up_on,
+	led_down_on,
+	flower_on,
+	flower_off
+};
+
+int fp1_index = 0;
 
 void ledbar0_toggle(void)
 {
