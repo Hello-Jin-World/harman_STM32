@@ -89,17 +89,32 @@ void led_main(void)
 {
 	while(1)
 	{
-		/*
-		led_all_on();
+//		led_all_on();
+//		HAL_Delay(500);
+//		led_all_off();
+//		HAL_Delay(500);
+//		led_up_on();
+//		led_down_on();
+//		flower_on();
+//		flower_off();
+//		led_keep_on_up();
+//		led_keep_on_down();
+
+		// Direct GPIO Access
+#if 1
+		// per 500ms, led all toggle
+		for (int i = 0; i < 8; i++)
+		{
+			GPIOB->ODR ^= (GPIO_PIN_0 << i);
+		}
+		//(unsigned short *) 0x40000000 ^= GPIO_PIN_0 | ~~~~GPIO_PIN_7    (same)
 		HAL_Delay(500);
-		led_all_off();
+#else
+		GPIOB->ODR |= GPIO_PIN_0; // led0 on
 		HAL_Delay(500);
-		led_up_on();
-		led_down_on();
-		flower_on();
-		flower_off();
-		*/
-		led_keep_on_up();
-		led_keep_on_down();
+		GPIOB->ODR &= ~GPIO_PIN_0; // led0 off
+		GPIOB->ODR ^= GPIO_PIN_1; // led1 toggle (easy method)
+		HAL_Delay(500);
+#endif
 	}
 }
