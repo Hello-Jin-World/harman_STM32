@@ -4,6 +4,8 @@
 
 extern void delay_us(unsigned int us);
 extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
+extern void init_arrow_up(void);
+extern void init_arrow_down(void);
 
 void set_rmp(int rmp);
 void stepmotor_main(void);
@@ -12,7 +14,6 @@ void stepmotor_forward(void);
 void stepmotor_backward(void);
 void stepmotor_stop(void);
 
-int i = 0;
 int j = 0;
 int stepmotor_state = 0;
 
@@ -86,18 +87,10 @@ void stepmotor_stop(void)
 
 void stepmotor_forward(void)
 {
-	if (i < 512)
-	{
-		stepmotor_drive(j);
-		set_rmp(13); // wait for 1126us
-		j++;
-		if (j == 8)
-		{
-			i++;
-		}
-		j %= 8;
-	}
-	i %= 512;
+	stepmotor_drive(j);
+	set_rmp(13); // wait for 1126us
+	j++;
+	j %= 8;
 
 	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
 	{
@@ -112,18 +105,13 @@ void stepmotor_forward(void)
 
 void stepmotor_backward(void)
 {
-	if (i < 512)
+	stepmotor_drive(j);
+	set_rmp(13); // wait for 1126us
+	j--;
+	if (j < 0)
 	{
-		stepmotor_drive(j);
-		set_rmp(13); // wait for 1126us
-		j--;
-		if (j < 0)
-		{
-			i++;
-			j = 7;
-		}
+		j = 7;
 	}
-	i %= 512;
 
 	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
 	{
