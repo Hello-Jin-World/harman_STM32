@@ -6,6 +6,7 @@ extern void delay_us(unsigned int us);
 extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
 extern void init_arrow_up(void);
 extern void init_arrow_down(void);
+extern volatile int TIM10_1ms_counter1;
 
 void set_rmp(int rmp);
 void stepmotor_main(void);
@@ -52,6 +53,26 @@ void set_rmp(int rmp)
 void stepmotor_main(void)
 {
 	(*stepmotor_funcp[stepmotor_state])();
+
+	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
+	{
+		if (stepmotor_state == STEPMOTOR_BACKWARD || stepmotor_state == STEPMOTOR_FORWARD)
+		{
+			stepmotor_state = STEPMOTOR_STOP;
+		}
+	}
+
+	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
+	{
+		if (stepmotor_state == STEPMOTOR_FORWARD)
+		{
+			stepmotor_state = STEPMOTOR_BACKWARD;
+		}
+		else
+		{
+			stepmotor_state = STEPMOTOR_FORWARD;
+		}
+	}
 }
 #else
 void stepmotor_main(void)
@@ -79,49 +100,35 @@ void stepmotor_main(void)
 void stepmotor_stop(void)
 {
 	stepmotor_drive(j);
-	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
-	{
-		stepmotor_state = STEPMOTOR_FORWARD;
-	}
 }
 
 void stepmotor_forward(void)
 {
-	stepmotor_drive(j);
-	set_rmp(13); // wait for 1126us
-	j++;
-	j %= 8;
-
-	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
+	if (TIM10_1ms_counter1 >= 16000/4096/13)
 	{
-		stepmotor_state = STEPMOTOR_BACKWARD;
+		stepmotor_drive(j);
+		j++;
+		j %= 8;
+		TIM10_1ms_counter1 = 0;
 	}
+	//set_rmp(13); // wait for 1126us
 
-	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
-	{
-		stepmotor_state = STEPMOTOR_STOP;
-	}
 }
 
 void stepmotor_backward(void)
 {
-	stepmotor_drive(j);
-	set_rmp(13); // wait for 1126us
-	j--;
-	if (j < 0)
+	if (TIM10_1ms_counter1 >= 16000/4096/13)
 	{
-		j = 7;
+		stepmotor_drive(j);
+		j--;
+		if (j < 0)
+		{
+			j = 7;
+		}
+		TIM10_1ms_counter1 = 0;
 	}
+	//set_rmp(13); // wait for 1126us
 
-	if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
-	{
-		stepmotor_state = STEPMOTOR_FORWARD;
-	}
-
-	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
-	{
-		stepmotor_state = STEPMOTOR_STOP;
-	}
 }
 
 #if 1
