@@ -112,6 +112,9 @@ extern int dotmatrix_main_func(void);
 extern void init_arrow_up(void);
 extern void init_arrow_down(void);
 extern void arrow_display(void);
+extern void stepmotor_main(void);
+extern void stepmotor_forward(void);
+extern void arrow_display_stepmotor(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -179,6 +182,9 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2); // ADD_0930
   HAL_UART_Receive_IT(&huart2, &rx_data, 1);
 printf("HAL_TIM_Base_Start_IT !!!\n");
+
+
+//stepmotor_main();
 init_arrow_up();
 init_arrow_down();
 //DHT11_Init();
@@ -557,6 +563,9 @@ static void MX_GPIO_Init(void)
                           |LED3_Pin|LED4_Pin|LED5_Pin|LED6_Pin
                           |LED7_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, IN1_Pin|IN2_Pin|IN3_Pin|IN4_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -587,6 +596,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : IN1_Pin IN2_Pin IN3_Pin IN4_Pin */
+  GPIO_InitStruct.Pin = IN1_Pin|IN2_Pin|IN3_Pin|IN4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
@@ -606,6 +622,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
 	//button_check();
 	//DHT11_processing();
     osDelay(1);
@@ -627,7 +644,8 @@ void StartTask01(void *argument)
   for(;;)
   {
 #if 1
-	  arrow_display();
+	  arrow_display_stepmotor();
+	  //arrow_display();
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
 #else
@@ -653,6 +671,7 @@ void StartTask02(void *argument)
   /* Infinite loop */
 	for(;;)
 	{
+		stepmotor_main();
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
 #if 0 // use timer/counter
 		if( TIM10_1ms_counter >= 50)
@@ -661,7 +680,7 @@ void StartTask02(void *argument)
 			TIM10_1ms_counter = 0;
 		}
 #endif
-		pc_command_processing();
+		//pc_command_processing();
 		//led_main();
 		osDelay(1);
 	}

@@ -80,6 +80,14 @@ void Error_Handler(void);
 #define LED2_GPIO_Port GPIOB
 #define LATCH_74HC595_Pin GPIO_PIN_15
 #define LATCH_74HC595_GPIO_Port GPIOB
+#define IN1_Pin GPIO_PIN_6
+#define IN1_GPIO_Port GPIOC
+#define IN2_Pin GPIO_PIN_7
+#define IN2_GPIO_Port GPIOC
+#define IN3_Pin GPIO_PIN_8
+#define IN3_GPIO_Port GPIOC
+#define IN4_Pin GPIO_PIN_9
+#define IN4_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

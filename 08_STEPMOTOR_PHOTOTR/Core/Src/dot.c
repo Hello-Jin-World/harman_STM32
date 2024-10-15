@@ -1,9 +1,12 @@
 #include "dot.h"
 #include "button.h"
+#include "stepmotor.h"
 
 extern SPI_HandleTypeDef hspi2;
 extern volatile int TIM10_1ms_counter1;
 extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
+
+extern int stepmotor_state;
 
 void dotmatrix_main_test();
 int dotmatrix_main(void);
@@ -13,6 +16,7 @@ int arrow_state = 1;
 void init_arrow_up(void);
 void init_arrow_down(void);
 void arrow_display(void);
+void arrow_display_stepmotor(void);
 
 uint8_t allon[] = {			// Definition for all LEDs on
 		0b11111111,
@@ -377,6 +381,18 @@ void arrow_display_down(void)
 	}
 }
 
+void arrow_display_stepmotor(void)
+{
+	if (stepmotor_state == STEPMOTOR_FORWARD)
+	{
+		arrow_display_up();
+	}
+	else if (stepmotor_state == STEPMOTOR_BACKWARD)
+	{
+		arrow_display_down();
+	}
+}
+
 void arrow_display(void)
 {
 	static int arrow_clear = 1;
@@ -401,6 +417,7 @@ void arrow_display(void)
 		arrow_display_down();
 	}
 }
+
 #else
 	int arrow_up = 0;
 	int arrow_down = 0;
