@@ -45,6 +45,8 @@ I2C_HandleTypeDef hi2c1;
 
 RTC_HandleTypeDef hrtc;
 
+SPI_HandleTypeDef hspi2;
+
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim10;
 
@@ -86,6 +88,7 @@ static void MX_TIM10_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_RTC_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_SPI2_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask01(void *argument);
 void StartTask02(void *argument);
@@ -102,6 +105,13 @@ extern void DHT11_Init(void);
 extern void get_rtc_date_time(void);
 //extern void i2c_lcd_main(void);
 extern void i2c_lcd_init(void);
+extern void dotmatrix_main_test();
+extern int dotmatrix_main(void);
+extern void init_dotmatrix(void);
+extern int dotmatrix_main_func(void);
+extern void init_arrow_up(void);
+extern void init_arrow_down(void);
+extern void arrow_display(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -163,16 +173,23 @@ int main(void)
   MX_TIM2_Init();
   MX_RTC_Init();
   MX_I2C1_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim10); // ADD_0930
   HAL_TIM_Base_Start_IT(&htim2); // ADD_0930
   HAL_UART_Receive_IT(&huart2, &rx_data, 1);
 printf("HAL_TIM_Base_Start_IT !!!\n");
-DHT11_Init();
-i2c_lcd_init();
+init_arrow_up();
+init_arrow_down();
+//DHT11_Init();
+//i2c_lcd_init();
+//init_dotmatrix();
+//dotmatrix_main();
 //i2c_lcd_main(); // for checking LCD operation temporary.
 //led_main(); // for checking LED operation temporary.
 //DHT11_main(); // for checking DHT11 operation temporary.
+//dotmatrix_main_test();
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -371,6 +388,44 @@ static void MX_RTC_Init(void)
 }
 
 /**
+  * @brief SPI2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI2_Init(void)
+{
+
+  /* USER CODE BEGIN SPI2_Init 0 */
+
+  /* USER CODE END SPI2_Init 0 */
+
+  /* USER CODE BEGIN SPI2_Init 1 */
+
+  /* USER CODE END SPI2_Init 1 */
+  /* SPI2 parameter configuration*/
+  hspi2.Instance = SPI2;
+  hspi2.Init.Mode = SPI_MODE_MASTER;
+  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi2.Init.NSS = SPI_NSS_SOFT;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi2.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI2_Init 2 */
+
+  /* USER CODE END SPI2_Init 2 */
+
+}
+
+/**
   * @brief TIM2 Initialization Function
   * @param None
   * @retval None
@@ -498,8 +553,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, DHT11_Pin|LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED0_Pin|LED1_Pin|LED2_Pin|LED3_Pin
-                          |LED4_Pin|LED5_Pin|LED6_Pin|LED7_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LED0_Pin|LED1_Pin|LED2_Pin|LATCH_74HC595_Pin
+                          |LED3_Pin|LED4_Pin|LED5_Pin|LED6_Pin
+                          |LED7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -507,8 +563,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BUTTON0_Pin BUTTON1_Pin BUTTON2_Pin BUTTON3_Pin */
-  GPIO_InitStruct.Pin = BUTTON0_Pin|BUTTON1_Pin|BUTTON2_Pin|BUTTON3_Pin;
+  /*Configure GPIO pins : BUTTON0_Pin BUTTON1_Pin */
+  GPIO_InitStruct.Pin = BUTTON0_Pin|BUTTON1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -520,10 +576,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED0_Pin LED1_Pin LED2_Pin LED3_Pin
-                           LED4_Pin LED5_Pin LED6_Pin LED7_Pin */
-  GPIO_InitStruct.Pin = LED0_Pin|LED1_Pin|LED2_Pin|LED3_Pin
-                          |LED4_Pin|LED5_Pin|LED6_Pin|LED7_Pin;
+  /*Configure GPIO pins : LED0_Pin LED1_Pin LED2_Pin LATCH_74HC595_Pin
+                           LED3_Pin LED4_Pin LED5_Pin LED6_Pin
+                           LED7_Pin */
+  GPIO_InitStruct.Pin = LED0_Pin|LED1_Pin|LED2_Pin|LATCH_74HC595_Pin
+                          |LED3_Pin|LED4_Pin|LED5_Pin|LED6_Pin
+                          |LED7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -549,7 +607,7 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
 	//button_check();
-	DHT11_processing();
+	//DHT11_processing();
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -569,8 +627,9 @@ void StartTask01(void *argument)
   for(;;)
   {
 #if 1
-
-	  get_rtc_date_time();
+	  arrow_display();
+	  //dotmatrix_main_func();
+	  //get_rtc_date_time();
 #else
 	  //ledbar0_toggle();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);

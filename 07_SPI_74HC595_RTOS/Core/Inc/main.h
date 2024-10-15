@@ -64,10 +64,6 @@ void Error_Handler(void);
 #define BUTTON0_GPIO_Port GPIOC
 #define BUTTON1_Pin GPIO_PIN_1
 #define BUTTON1_GPIO_Port GPIOC
-#define BUTTON2_Pin GPIO_PIN_2
-#define BUTTON2_GPIO_Port GPIOC
-#define BUTTON3_Pin GPIO_PIN_3
-#define BUTTON3_GPIO_Port GPIOC
 #define DHT11_Pin GPIO_PIN_0
 #define DHT11_GPIO_Port GPIOA
 #define USART_TX_Pin GPIO_PIN_2
@@ -82,6 +78,8 @@ void Error_Handler(void);
 #define LED1_GPIO_Port GPIOB
 #define LED2_Pin GPIO_PIN_2
 #define LED2_GPIO_Port GPIOB
+#define LATCH_74HC595_Pin GPIO_PIN_15
+#define LATCH_74HC595_GPIO_Port GPIOB
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

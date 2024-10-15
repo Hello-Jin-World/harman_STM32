@@ -11,6 +11,9 @@ void flower_on(void);
 void flower_off(void);
 void ledbar0_toggle(void);
 
+extern volatile int TIM10_1ms_counter1;  // ADD_PSJ_0930
+extern SPI_HandleTypeDef hspi2;
+
 void (*fp1[])() =
 {
 	led_up_on,
@@ -18,8 +21,6 @@ void (*fp1[])() =
 	flower_on,
 	flower_off
 };
-
-extern volatile int TIM10_1ms_counter1;  // ADD_PSJ_0930
 
 int fp1_index = 0;
 
@@ -189,7 +190,49 @@ void flower_off(void)
 
 void led_main(void)
 {
-	fp1[fp1_index]();
+	uint8_t led_buff[8] = {0xFF, 0x0F, 0xF0, 0x00,0xFF, 0x0F, 0xF0, 0x00};
+
+	while (1)
+
+	{
+
+#if 1
+
+		HAL_SPI_Transmit(&hspi2,led_buff, 1, 1); // 1byte, 1ms
+
+		GPIOB->ODR &= ~GPIO_PIN_15; // latch핀을 pull-down ODR(Output Data Register);
+
+		GPIOB->ODR |= GPIO_PIN_15; // latch핀을 pull-up ODR(Output Data Register)
+
+		HAL_Delay(500);
+
+		HAL_SPI_Transmit(&hspi2, &led_buff[3], 1, 1);
+
+		GPIOB->ODR &= ~ GPIO_PIN_15;
+
+		GPIOB->ODR |= GPIO_PIN_15;
+
+		HAL_Delay(500);
+
+#else
+
+		for (int i=0; i < 8; i++)
+
+		{
+
+			HAL_SPI_Transmit(&hspi2, &led_buff[i], 1, 1);
+
+			GPIOB->ODR &= ~ GPIO_PIN_15; // latch핀을 pull-down
+
+			GPIOB->ODR |= GPIO_PIN_15; // // latch핀을 pull-up
+
+			HAL_Delay(400);
+
+		}
+
+#endif
+	}
+//	fp1[fp1_index]();
 
 	/*
 	if (TIM10_1ms_counter2 >= 1600 && TIM10_1ms_counter2 < 3200)

@@ -7,6 +7,9 @@
 extern void (*fp[])();
 extern void set_rtc(char *date_time);
 
+extern int dotmatrix_command;
+extern int dotmatrix_clear;
+
 void pc_command_processing();
 
 extern UART_HandleTypeDef huart2;
@@ -118,6 +121,21 @@ void pc_command_processing(void)
 			status_cmd(pdht11);
 			printf("pdatetime : ");
 			status_cmd(pdatetime);
+		}
+		else if(strncmp(rx_buffer[front], "DOTDISON", strlen("DOTDISON")) == 0)
+		{
+			dotmatrix_command = 1;
+			dotmatrix_clear = 0;
+		}
+		else if(strncmp(rx_buffer[front], "DOTDISSTOP", strlen("DOTDISSTOP")) == 0)
+		{
+			dotmatrix_command = 0;
+			dotmatrix_clear = 0;
+		}
+		else if(strncmp(rx_buffer[front], "DOTDISOFF", strlen("DOTDISOFF")) == 0)
+		{
+			dotmatrix_command = 0;
+			dotmatrix_clear = 1;
 		}
 		front++;
 		front %= COMMAND_NUMBER;
