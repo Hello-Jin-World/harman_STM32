@@ -45,9 +45,8 @@ I2C_HandleTypeDef hi2c1;
 
 RTC_HandleTypeDef hrtc;
 
-SPI_HandleTypeDef hspi2;
-
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim10;
 
 UART_HandleTypeDef huart2;
@@ -77,6 +76,7 @@ const osThreadAttr_t myTask02_attributes = {
 volatile int TIM10_1ms_counter = 0;  // ADD_PSJ_0930
 volatile int TIM10_1ms_counter1 = 0;
 volatile int TIM10_DHT11_counter = 0;
+volatile int TIM10_servomotor_counter = 0;
 uint8_t rx_data;
 /* USER CODE END PV */
 
@@ -88,7 +88,7 @@ static void MX_TIM10_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_RTC_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_SPI2_Init(void);
+static void MX_TIM3_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask01(void *argument);
 void StartTask02(void *argument);
@@ -115,6 +115,8 @@ extern void arrow_display(void);
 extern void stepmotor_main(void);
 extern void stepmotor_forward(void);
 extern void arrow_display_stepmotor(void);
+extern void servomotor_main(void);
+extern void servo_motor_control(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -176,10 +178,11 @@ int main(void)
   MX_TIM2_Init();
   MX_RTC_Init();
   MX_I2C1_Init();
-  MX_SPI2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim10); // ADD_0930
   HAL_TIM_Base_Start_IT(&htim2); // ADD_0930
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2); // Servo motor ADD_1017
   HAL_UART_Receive_IT(&huart2, &rx_data, 1);
 
 init_arrow_up();
@@ -392,44 +395,6 @@ static void MX_RTC_Init(void)
 }
 
 /**
-  * @brief SPI2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_SPI2_Init(void)
-{
-
-  /* USER CODE BEGIN SPI2_Init 0 */
-
-  /* USER CODE END SPI2_Init 0 */
-
-  /* USER CODE BEGIN SPI2_Init 1 */
-
-  /* USER CODE END SPI2_Init 1 */
-  /* SPI2 parameter configuration*/
-  hspi2.Instance = SPI2;
-  hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi2.Init.CRCPolynomial = 10;
-  if (HAL_SPI_Init(&hspi2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI2_Init 2 */
-
-  /* USER CODE END SPI2_Init 2 */
-
-}
-
-/**
   * @brief TIM2 Initialization Function
   * @param None
   * @retval None
@@ -471,6 +436,65 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 1680-1;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 1000-1;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+  HAL_TIM_MspPostInit(&htim3);
 
 }
 
@@ -557,9 +581,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, DHT11_Pin|LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED0_Pin|LED1_Pin|LED2_Pin|LATCH_74HC595_Pin
-                          |LED3_Pin|LED4_Pin|LED5_Pin|LED6_Pin
-                          |LED7_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LED0_Pin|LED1_Pin|LED2_Pin|CLK_74HC595_Pin
+                          |DS_74HC595_Pin|LATCH_74HC595_Pin|LED3_Pin|LED4_Pin
+                          |LED5_Pin|LED6_Pin|LED7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, IN1_Pin|IN2_Pin|IN3_Pin|IN4_Pin, GPIO_PIN_RESET);
@@ -570,8 +594,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BUTTON0_Pin BUTTON1_Pin */
-  GPIO_InitStruct.Pin = BUTTON0_Pin|BUTTON1_Pin;
+  /*Configure GPIO pins : BUTTON0_Pin BUTTON1_Pin BUTTON2_Pin BUTTON3_Pin */
+  GPIO_InitStruct.Pin = BUTTON0_Pin|BUTTON1_Pin|BUTTON2_Pin|BUTTON3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -589,12 +613,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED0_Pin LED1_Pin LED2_Pin LATCH_74HC595_Pin
-                           LED3_Pin LED4_Pin LED5_Pin LED6_Pin
-                           LED7_Pin */
-  GPIO_InitStruct.Pin = LED0_Pin|LED1_Pin|LED2_Pin|LATCH_74HC595_Pin
-                          |LED3_Pin|LED4_Pin|LED5_Pin|LED6_Pin
-                          |LED7_Pin;
+  /*Configure GPIO pins : LED0_Pin LED1_Pin LED2_Pin CLK_74HC595_Pin
+                           DS_74HC595_Pin LATCH_74HC595_Pin LED3_Pin LED4_Pin
+                           LED5_Pin LED6_Pin LED7_Pin */
+  GPIO_InitStruct.Pin = LED0_Pin|LED1_Pin|LED2_Pin|CLK_74HC595_Pin
+                          |DS_74HC595_Pin|LATCH_74HC595_Pin|LED3_Pin|LED4_Pin
+                          |LED5_Pin|LED6_Pin|LED7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -633,7 +657,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-
+	  //servomotor_main();
 	//button_check();
 	//DHT11_processing();
     osDelay(1);
@@ -655,7 +679,7 @@ void StartTask01(void *argument)
   for(;;)
   {
 #if 1
-	  arrow_display_stepmotor();
+	  //arrow_display_stepmotor();
 	  //arrow_display();
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
@@ -682,7 +706,8 @@ void StartTask02(void *argument)
   /* Infinite loop */
 	for(;;)
 	{
-		stepmotor_main();
+		servo_motor_control();
+		//stepmotor_main();
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
 #if 0 // use timer/counter
 		if( TIM10_1ms_counter >= 50)
@@ -719,6 +744,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       TIM10_1ms_counter++;
       TIM10_1ms_counter1++;
       TIM10_DHT11_counter++;
+      TIM10_servomotor_counter++;
    }
   /* USER CODE END Callback 1 */
 }
