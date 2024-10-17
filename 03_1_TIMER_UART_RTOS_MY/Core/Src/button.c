@@ -3,22 +3,18 @@
 
 void button_check(void);
 int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
-int read_pin(uint16_t GPIO_Pin);
 
-/*
 void (*fp[])() =
 {
 	led_all_off,
 	led_all_on,
 	led_up_on,
 	led_down_on,
-	led_keep_on_up,
-	led_keep_on_down,
 	flower_on,
 	flower_off,
-
+	led_keep_on_up,
+	led_keep_on_down
 };
- */
 
 unsigned char button_status[BUTTON_NUMBER] = {
 		BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE
@@ -31,7 +27,7 @@ void button_check(void)
 	static int led_on = 0;
 	static int mode = 0;
 
-	//fp[mode]();
+	fp[mode]();
 
 	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 	{
@@ -83,13 +79,9 @@ void button_check(void)
 // if one click status, return 1
 int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num) // ex) GPIOC, GPIO_PIN_13, 0
 {
-	int state; // store in register
+	int state;
 
-#if 0
 	state = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin); // active : 0, inactive : 1
-#else
-	state = read_pin(GPIO_Pin);
-
 	if (state == BUTTON_PRESS && button_status[button_num] == BUTTON_RELEASE)
 	{
 		HAL_Delay(60); // For noise remove delay
@@ -103,19 +95,4 @@ int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num) // ex) GP
 		return BUTTON_PRESS;
 	}
 	return BUTTON_RELEASE;
-#endif
-
-}
-
-int read_pin(uint16_t GPIO_Pin)
-{
-	  if ((*(unsigned int *) 0x40020810 & GPIO_Pin) != 0x0000)
-	  {
-		  return BUTTON_PRESS;
-	  }
-
-	  else
-	  {
-		  return BUTTON_RELEASE;
-	  }
 }

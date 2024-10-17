@@ -5,20 +5,17 @@ void button_check(void);
 int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
 int read_pin(uint16_t GPIO_Pin);
 
-/*
 void (*fp[])() =
 {
 	led_all_off,
 	led_all_on,
 	led_up_on,
 	led_down_on,
-	led_keep_on_up,
-	led_keep_on_down,
 	flower_on,
 	flower_off,
-
+	led_keep_on_up,
+	led_keep_on_down
 };
- */
 
 unsigned char button_status[BUTTON_NUMBER] = {
 		BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE, BUTTON_RELEASE
@@ -31,7 +28,7 @@ void button_check(void)
 	static int led_on = 0;
 	static int mode = 0;
 
-	//fp[mode]();
+	fp[mode]();
 
 	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 	{

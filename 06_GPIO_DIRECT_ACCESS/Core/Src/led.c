@@ -26,6 +26,7 @@ void led_all_off(void)
 	//	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, 0);
 	//HAL_GPIO_WritePin(GPIOB, 0xff, 0);
 	*(unsigned int *) 0x40020414 &= 0xff00; // why use 0xff00? don't used 0x0000.
+	// &= ~0x00ff <-- recommend this method.
 }
 
 void led_up_on(void)
@@ -106,6 +107,9 @@ void led_main(void)
 	printf("GPIOB -> IDR : %0x\n", &GPIOB->IDR);
 	printf("GPIOB -> ODR : %0x\n", &GPIOB->ODR);
 	printf("GPIOC -> ODR : %0x\n", &GPIOC->ODR);
+	printf("GPIOC -> IDR : %0x\n", &GPIOC->IDR);
+	printf("GPIOB -> ODR : %0x\n", &GPIOB->ODR);
+		printf("GPIOB -> IDR : %0x\n", &GPIOB->IDR);
 
 	static int index = 0;
 
@@ -120,7 +124,7 @@ void led_main(void)
 			*(unsigned int *) 0x40020414 &= 0xff00;
 		}
 
-		if (get_button(GPIOC, GPIO_PIN_1, BUTTON1) == BUTTON_PRESS)
+		if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 		{
 			GPIOA->ODR ^= GPIO_PIN_5;
 			index = !index;
