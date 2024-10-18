@@ -777,8 +777,8 @@ void StartTask01(void *argument)
   for(;;)
   {
 #if 1
-	  arrow_display_stepmotor();
-	  //arrow_display();
+	  //arrow_display_stepmotor();
+	  arrow_display();
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
 		if (osMutexAcquire(myMutex01Handle, 1000) == osOK) // Lock

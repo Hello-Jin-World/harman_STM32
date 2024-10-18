@@ -7,6 +7,7 @@ extern volatile int TIM10_1ms_counter1;
 extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
 extern void write_ds_75hc595(unsigned char data);
 extern void latch_clock(void);
+extern int current_floor_state;
 
 extern int stepmotor_state;
 
@@ -14,7 +15,6 @@ void dotmatrix_main_test();
 int dotmatrix_main(void);
 int dotmatrix_main_func(void);
 void arrow_display_up(void);
-int arrow_state = 1;
 void init_arrow_up(void);
 void init_arrow_down(void);
 void arrow_display(void);
@@ -74,6 +74,43 @@ uint8_t one[] =
 		0b00011000,
 		0b01111110,
 		0b01111110
+};
+
+uint8_t two[] =
+{
+		0b01110000,	//2
+		0b10001000,
+		0b00001000,
+		0b00010000,
+		0b00100000,
+		0b01000000,
+		0b11111000,
+		6
+};
+
+uint8_t three[] =
+{
+		0b11111000,	//3
+		0b00010000,
+		0b00100000,
+		0b00010000,
+		0b00001000,
+		0b10001000,
+		0b01110000,
+		6
+};
+
+uint8_t four[] =
+{
+
+		0b00010000,	//4
+		0b00110000,
+		0b01010000,
+		0b10010000,
+		0b11111000,
+		0b00010000,
+		0b00010000,
+		6
 };
 
 
@@ -406,182 +443,274 @@ void arrow_display_stepmotor(void)
 
 void arrow_display(void)
 {
-	static int arrow_clear = 1;
-	if (arrow_clear)
+	if (stepmotor_state == STEPMOTOR_STOP)
 	{
-		for (int i = 0; i < 8; i++)
+		if (current_floor_state == FLOOR1)
 		{
-			display_data[i] = 0;
+			for (int i=0; i < 8; i++)
+			{
+				col[0] = ~(1 << i);  // 00000001  --> 11111110
+				col[1] = one[i];
+				write_ds_75hc595(col[0]);
+				write_ds_75hc595(col[1]);
+				latch_clock();
+				HAL_Delay(1);
+			}
+		}
+		else if (current_floor_state == FLOOR2)
+		{
+			for (int i=0; i < 8; i++)
+			{
+				col[0] = ~(1 << i);  // 00000001  --> 11111110
+				col[1] = two[i];
+				write_ds_75hc595(col[0]);
+				write_ds_75hc595(col[1]);
+				latch_clock();
+				HAL_Delay(1);
+			}
+		}
+		else if (current_floor_state == FLOOR3)
+		{
+			for (int i=0; i < 8; i++)
+			{
+				col[0] = ~(1 << i);  // 00000001  --> 11111110
+				col[1] = three[i];
+				write_ds_75hc595(col[0]);
+				write_ds_75hc595(col[1]);
+				latch_clock();
+				HAL_Delay(1);
+			}
+		}
+		else if (current_floor_state == FLOOR4)
+		{
+			for (int i=0; i < 8; i++)
+			{
+				col[0] = ~(1 << i);  // 00000001  --> 11111110
+				col[1] = four[i];
+				write_ds_75hc595(col[0]);
+				write_ds_75hc595(col[1]);
+				latch_clock();
+				HAL_Delay(1);
+			}
 		}
 	}
+
+	/*
 	if(get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 	{
 		arrow_clear = 0;
 		arrow_state = !arrow_state;
-	}
-	if (arrow_state == 0 && arrow_clear == 0)
+	}*/
+	else if (stepmotor_state == STEPMOTOR_FORWARD)
 	{
 		arrow_display_up();
 	}
-	if (arrow_state == 1 && arrow_clear == 0)
+	else if (stepmotor_state == STEPMOTOR_BACKWARD)
 	{
 		arrow_display_down();
 	}
 }
 
 #else
-	int arrow_up = 0;
-	int arrow_down = 0;
+int arrow_up = 0;
+int arrow_down = 0;
 
-	void arrow_dispaly(void)
+void arrow_dispaly(void)
+{
+	static int j = 1;
+	static int k = 0;
+	static int countj=0;  // Column count
+	static int countk=0;  // Column count
+	static int index=0;  // 2D index value of scroll_buffer
+	static uint32_t past_time=0;  // Store previous tick value
+
+	uint32_t now = HAL_GetTick();  // 1ms
+	// 1. At start, past_time=0; now: 500 --> past_time=500
+	if (arrow_up)
 	{
-		static int j = 1;
-		static int k = 0;
-		static int countj=0;  // Column count
-		static int countk=0;  // Column count
-		static int index=0;  // 2D index value of scroll_buffer
-		static uint32_t past_time=0;  // Store previous tick value
-
-		uint32_t now = HAL_GetTick();  // 1ms
-		// 1. At start, past_time=0; now: 500 --> past_time=500
-		if (arrow_up)
+		if (now - past_time >= 100) // 500ms scroll
 		{
-			if (now - past_time >= 100) // 500ms scroll
-			{
 
-				past_time = now;
-				for (int i=0; i < 8; i++)
-				{
-					display_data[i] = (scroll_buffer[index][j++]) |
-							(scroll_buffer[index][j]);
-
-				}
-				j++;
-				j%=9;
-			}
-		}
-		else if (arrow_down)
-		{
-			if (now - past_time >= 100) // 500ms scroll
-			{
-
-				past_time = now;
-				for (int i=0; i < 8; i++)
-				{
-					display_data[i] = (scroll_buffer[index][j]) |
-							(scroll_buffer[index][j--]);
-
-				}
-				j--;
-				if (j <= 0)
-				{
-					j = 100;
-				}
-			}
-		}
-
-		if (arrow_up == 0 && arrow_down == 0)
-		{
+			past_time = now;
 			for (int i=0; i < 8; i++)
 			{
-				display_data[i] = 0;
+				display_data[i] = (scroll_buffer[index][j++]) |
+						(scroll_buffer[index][j]);
+
+			}
+			j++;
+			j%=9;
+		}
+	}
+	else if (arrow_down)
+	{
+		if (now - past_time >= 100) // 500ms scroll
+		{
+
+			past_time = now;
+			for (int i=0; i < 8; i++)
+			{
+				display_data[i] = (scroll_buffer[index][j]) |
+						(scroll_buffer[index][j--]);
+
+			}
+			j--;
+			if (j <= 0)
+			{
+				j = 100;
 			}
 		}
+	}
+
+	if (arrow_up == 0 && arrow_down == 0)
+	{
 		for (int i=0; i < 8; i++)
 		{
-			// Common anode mode
-			// Column should be 0 and Row should be 1 for the corresponding LED to turn on.
-			col[0] = ~(1 << i);  // 00000001  --> 11111110
-			col[1] = display_data[i];
-			//HAL_SPI_Transmit(&hspi2, col, 2, 1);
-			GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
-			GPIOB->ODR |= GPIO_PIN_15;   // Pull-up latch pin
-			HAL_Delay(1);
+			display_data[i] = 0;
 		}
-		if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_up == 0)
-		{
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = 0;
-			}
-			arrow_down = 0;
-			arrow_up = 1;
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = arrow[i];
-			}
-			for (int i=1; i < number_of_character+1; i++)
-			{
-				for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
-				{
-					scroll_buffer[i][j] = arrow[0][j];
-				}
-			}
-		}
-
-		else if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_down == 0)
-		{
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = 0;
-			}
-			arrow_down = 1;
-			arrow_up = 0;
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = arrow[i];
-			}
-			for (int i=1; i < number_of_character+1; i++)
-			{
-				for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
-				{
-					scroll_buffer[i][j] = arrow[1][j];
-				}
-			}
-		}
-
-
 	}
+	for (int i=0; i < 8; i++)
+	{
+		// Common anode mode
+		// Column should be 0 and Row should be 1 for the corresponding LED to turn on.
+		col[0] = ~(1 << i);  // 00000001  --> 11111110
+		col[1] = display_data[i];
+		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
+		GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
+		GPIOB->ODR |= GPIO_PIN_15;   // Pull-up latch pin
+		HAL_Delay(1);
+	}
+	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_up == 0)
+	{
+		for (int i=0; i < 8; i++)
+		{
+			display_data[i] = 0;
+		}
+		arrow_down = 0;
+		arrow_up = 1;
+		for (int i=0; i < 8; i++)
+		{
+			display_data[i] = arrow[i];
+		}
+		for (int i=1; i < number_of_character+1; i++)
+		{
+			for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
+			{
+				scroll_buffer[i][j] = arrow[0][j];
+			}
+		}
+	}
+
+	else if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_down == 0)
+	{
+		for (int i=0; i < 8; i++)
+		{
+			display_data[i] = 0;
+		}
+		arrow_down = 1;
+		arrow_up = 0;
+		for (int i=0; i < 8; i++)
+		{
+			display_data[i] = arrow[i];
+		}
+		for (int i=1; i < number_of_character+1; i++)
+		{
+			for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
+			{
+				scroll_buffer[i][j] = arrow[1][j];
+			}
+		}
+	}
+
+
+}
 #endif
 
-	int dotmatrix_command = 0;
-	int dotmatrix_clear = 1;
-	int dotmatrix_main_func(void)
-	{
-		static int count=0;  // Column count
-		static int index=0;  // 2D index value of scroll_buffer
-		static uint32_t past_time=0;  // Store previous tick value
+int dotmatrix_command = 0;
+int dotmatrix_clear = 1;
+int dotmatrix_main_func(void)
+{
+	static int count=0;  // Column count
+	static int index=0;  // 2D index value of scroll_buffer
+	static uint32_t past_time=0;  // Store previous tick value
 
-		uint32_t now = HAL_GetTick();  // 1ms
-		// 1. At start, past_time=0; now: 500 --> past_time=500
-		if (dotmatrix_command)
+	uint32_t now = HAL_GetTick();  // 1ms
+	// 1. At start, past_time=0; now: 500 --> past_time=500
+	if (dotmatrix_command)
+	{
+		if (now - past_time >= 500) // 500ms scroll
 		{
-			if (now - past_time >= 500) // 500ms scroll
-			{
-				past_time = now;
-				for (int i=0; i < 8; i++)
-				{
-					display_data[i] = (scroll_buffer[index][i] >> count) |
-							(scroll_buffer[index+1][i] >> 8 - count);
-				}
-				if (++count == 8) // If all 8 columns are processed, move to next scroll_buffer
-				{
-					count =0;
-					index++;  // Move to next scroll_buffer
-					if (index == number_of_character+1) index=0;
-					// After processing all 11 characters, move to scroll_buffer 0
-				}
-			}
-		}
-		if (dotmatrix_clear)
-		{
+			past_time = now;
 			for (int i=0; i < 8; i++)
 			{
-				display_data[i] = 0;
+				display_data[i] = (scroll_buffer[index][i] >> count) |
+						(scroll_buffer[index+1][i] >> 8 - count);
 			}
-			count = 0;
-			index = 0;
+			if (++count == 8) // If all 8 columns are processed, move to next scroll_buffer
+			{
+				count =0;
+				index++;  // Move to next scroll_buffer
+				if (index == number_of_character+1) index=0;
+				// After processing all 11 characters, move to scroll_buffer 0
+			}
+		}
+	}
+	if (dotmatrix_clear)
+	{
+		for (int i=0; i < 8; i++)
+		{
+			display_data[i] = 0;
+		}
+		count = 0;
+		index = 0;
 
+	}
+	for (int i=0; i < 8; i++)
+	{
+		// Common anode mode
+		// Column should be 0 and Row should be 1 for the corresponding LED to turn on.
+		col[0] = ~(1 << i);  // 00000001  --> 11111110
+		col[1] = display_data[i];
+		write_ds_75hc595(col[0]);
+		write_ds_75hc595(col[1]);
+		latch_clock();
+		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
+		//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
+		//GPIOB->ODR |= GPIO_PIN_15;   // Pull-up latch pin
+		HAL_Delay(1);
+	}
+}
+
+
+// Scroll text display program
+int dotmatrix_main(void)
+{
+	static int count=0;  // Column count
+	static int index=0;  // 2D index value of scroll_buffer
+	static uint32_t past_time=0;  // Store previous tick value
+
+	init_dotmatrix();
+
+	while(1)
+	{
+		uint32_t now = HAL_GetTick();  // 1ms
+		// 1. At start, past_time=0; now: 500 --> past_time=500
+		if (now - past_time >= 500) // 500ms scroll
+		{
+			past_time = now;
+			for (int i=0; i < 8; i++)
+			{
+
+				display_data[i] = (scroll_buffer[index][i] >> count) |
+						(scroll_buffer[index+1][i] << 8 - count);
+			}
+			if (++count == 8) // If all 8 columns are processed, move to next scroll_buffer
+			{
+				count =0;
+				index++;  // Move to next scroll_buffer
+				if (index == number_of_character+1) index=0;
+				// After processing all 11 characters, move to scroll_buffer 0
+			}
 		}
 		for (int i=0; i < 8; i++)
 		{
@@ -598,53 +727,6 @@ void arrow_display(void)
 			HAL_Delay(1);
 		}
 	}
-
-
-	// Scroll text display program
-	int dotmatrix_main(void)
-	{
-		static int count=0;  // Column count
-		static int index=0;  // 2D index value of scroll_buffer
-		static uint32_t past_time=0;  // Store previous tick value
-
-		init_dotmatrix();
-
-		while(1)
-		{
-			uint32_t now = HAL_GetTick();  // 1ms
-			// 1. At start, past_time=0; now: 500 --> past_time=500
-			if (now - past_time >= 500) // 500ms scroll
-			{
-				past_time = now;
-				for (int i=0; i < 8; i++)
-				{
-
-					display_data[i] = (scroll_buffer[index][i] >> count) |
-							(scroll_buffer[index+1][i] << 8 - count);
-				}
-				if (++count == 8) // If all 8 columns are processed, move to next scroll_buffer
-				{
-					count =0;
-					index++;  // Move to next scroll_buffer
-					if (index == number_of_character+1) index=0;
-					// After processing all 11 characters, move to scroll_buffer 0
-				}
-			}
-			for (int i=0; i < 8; i++)
-			{
-				// Common anode mode
-				// Column should be 0 and Row should be 1 for the corresponding LED to turn on.
-				col[0] = ~(1 << i);  // 00000001  --> 11111110
-				col[1] = display_data[i];
-				write_ds_75hc595(col[0]);
-				write_ds_75hc595(col[1]);
-				latch_clock();
-				//HAL_SPI_Transmit(&hspi2, col, 2, 1);
-				//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
-				//GPIOB->ODR |= GPIO_PIN_15;   // Pull-up latch pin
-				HAL_Delay(1);
-			}
-		}
-		return 0;
-	}
+	return 0;
+}
 

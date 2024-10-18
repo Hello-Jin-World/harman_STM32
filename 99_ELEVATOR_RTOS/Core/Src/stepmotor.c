@@ -139,20 +139,21 @@ void stepmotor_stop(void)
 
 void stepmotor_forward(void)
 {
-	if (TIM10_1ms_counter1 >= 16000/4096/13)
-	{
+//	if (TIM10_1ms_counter1 >= 16000/4096/13)
+//	{
 		stepmotor_drive(j);
 		j++;
 		j %= 8;
-		TIM10_1ms_counter1 = 0;
-	}
+//		TIM10_1ms_counter1 = 0;
+//	}
 	if (floor_select_state == current_floor_state)
 	{
 		HAL_GPIO_WritePin(GPIOB, 0xff, 0);
 
 		stepmotor_state = STEPMOTOR_STOP;
 	}
-	//set_rmp(13); // wait for 1126us
+	delay_us(126);
+//	set_rmp(13); // wait for 1126us
 
 }
 
