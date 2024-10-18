@@ -1,7 +1,12 @@
-#include "main.h"
+#include "buzzer.h"
 
 void buzzer_main();
 void playSong();
+void beep(int repeat);
+void set_buzzer(int frequency);
+void rrr(void);
+void siren(int repeat);
+void fire_truck(void);
 
 /*************************************************************************************************************
 
@@ -67,78 +72,182 @@ extern TIM_HandleTypeDef htim1;
 
 enum notes
 {
-  C4 = 262, // 도 261.63Hz
-  D4 = 294, // 래 293.66Hz
-  E4 = 330, // 미 329.63Hz
-  F4 = 349, // 파 349.23Hz
-  G4 = 392, // 솔 392.00Hz
-  A4 = 440, // 라 440.00Hz
-  B4 = 494, // 시 493.88Hz
-  C5 = 523  // 도 523.25Hz
+	C4 = 262, // 도 261.63Hz
+	D4 = 294, // 래 293.66Hz
+	E4 = 330, // 미 329.63Hz
+	F4 = 349, // 파 349.23Hz
+	G4 = 392, // 솔 392.00Hz
+	A4 = 440, // 라 440.00Hz
+	B4 = 494, // 시 493.88Hz
+	C5 = 523  // 도 523.25Hz
 };
 
 
 // 학교종이 떙떙땡
 unsigned int school_bell[] =
 {
-	G4,G4,A4,A4,G4,G4,E4,G4,G4,E4,E4,D4,
-	G4,G4,A4,A4,G4,G4,E4,G4,E4,D4,E4,C4
+		G4,G4,A4,A4,G4,G4,E4,G4,G4,E4,E4,D4,
+		G4,G4,A4,A4,G4,G4,E4,G4,E4,D4,E4,C4
 };
 
 
 // happybirthday to you
 unsigned int happy_birthday[] =
 {
-	 C4,C4,D4,C4,F4,E4,C4,C4,D4,C4,G4,
-	 F4,C4,C4,C5,A4,F4,E4,D4,B4,B4,A4,
-	 A4,G4,F4
+		C4,C4,D4,C4,F4,E4,C4,C4,D4,C4,G4,
+		F4,C4,C4,C5,A4,F4,E4,D4,B4,B4,A4,
+		A4,G4,F4
 };
 
- unsigned int duration[] = {1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,1,1,2,2,2,2};
+unsigned int duration[] = {1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,1,1,2,2,2,2};
 
- void noTone()
- {
-	 htim1.Instance->CCR1=0;
-     HAL_Delay(50);
- }
+void noTone()
+{
+	htim1.Instance->CCR1=0;
+	HAL_Delay(50);
+}
+
+void set_buzzer(int frequency)
+{
+	int divide_freq = 1600000; // 4KHZ 부저 주파수를 내기 위해 기본 클럭을 분주해서 얻은 주파수
+
+	__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / frequency); // PWM value
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / frequency / 2);  // Duty를 50%로 설정 한다.
+}
+
+void beep(int repeat)
+{
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+	for (int i = 0; i < repeat; i++)
+	{
+		// 2kHz
+		set_buzzer(2000);
+		HAL_Delay(200);
+		// stop
+		noTone();
+		HAL_Delay(200);
+	}
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+}
+
+void rrr(void)
+{
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+	for (int i = 0; i < 20; i++)
+	{
+		// 2kHz
+		set_buzzer(880);
+		HAL_Delay(100);
+		// stop
+		noTone();
+		HAL_Delay(20);
+	}
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+}
+
+void siren(int repeat)
+{
+	static int frequency = 1110;
+
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+	for (int i = 0; i < repeat; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			set_buzzer(frequency);
+			frequency += 10;
+			HAL_Delay(5);
+		}
+		for (int j = 0; j < 100; j++)
+		{
+			set_buzzer(frequency);
+			frequency -= 10;
+			HAL_Delay(5);
+		}
+		noTone();
+	}
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+}
+
+void fire_truck(void)
+{
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+#if 1
+	for (int frequency = 750; frequency <= 1500; frequency += 35)
+	{
+		set_buzzer(frequency);
+		HAL_Delay(100);
+	}
+	for (int frequency = 1500; frequency >= 750; frequency -= 15)
+	{
+		set_buzzer(frequency);
+		HAL_Delay(100);
+	}
+#else
+	static int frequency = 750;
+	for (int j = 0; j < 23; j++)
+	{
+		set_buzzer(frequency);
+		frequency += 35;
+		HAL_Delay(100);
+	}
+	for (int j = 0; j < 53; j++)
+	{
+		set_buzzer(frequency);
+		frequency -= 15;
+		HAL_Delay(80);
+	}
+#endif
+	noTone();
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+}
 
 void buzzer_main()
 {
-   int divide_freq = 1600000; // 4KHZ 부저 주파수를 내기 위해 기본 클럭을 분주해서 얻은 주파수
+//	int divide_freq = 1600000; // 4KHZ 부저 주파수를 내기 위해 기본 클럭을 분주해서 얻은 주파수
 
-  while (1)
-  {
+	while (1)
+	{
+#if 1
+		//beep(5);
+		//rrr();
+		//siren(10);
+		fire_truck();
+		//HAL_Delay(200);
+#else
+		// 학교 종이 땡땡땡
+		for (int i=0; i < 24; i++)
+		{
+			__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / school_bell[i]);
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / school_bell[i] / 2);  // Duty를 50%로 설정 한다.
+			HAL_Delay(500);
+			noTone();  /* note 소리 내고 50ms 끊어주기 */
+		}
 
-	// 학교 종이 땡땡땡
-    for (int i=0; i < 24; i++)
-    {
-		__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / school_bell[i]);
-		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / school_bell[i] / 2);  // Duty를 50%로 설정 한다.
-		HAL_Delay(500);
-		noTone();  /* note 소리 내고 50ms 끊어주기 */
-    }
+		/* 음악 끝나고 3초 후 시작*/
+		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1) ;
+		HAL_Delay(3000);
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) ;
 
-    /* 음악 끝나고 3초 후 시작*/
-    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1) ;
-    HAL_Delay(3000);
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) ;
+		// happy birthday to you
+		for (int i=0; i < 25; i++)
+		{
+			__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / happy_birthday[i]);
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / happy_birthday[i] / 2);
+			HAL_Delay(300*duration[i]);
+			noTone();
+		}
 
-    // happy birthday to you
-    for (int i=0; i < 25; i++)
-    {
-		__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / happy_birthday[i]);
-		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / happy_birthday[i] / 2);
-		HAL_Delay(300*duration[i]);
-		noTone();
-    }
+		/* 음악 끝나고 3초 후 시작 */
+		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1) ;
+		HAL_Delay(3000);
+		HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) ;
+#endif
 
-    /* 음악 끝나고 3초 후 시작 */
-    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1) ;
-    HAL_Delay(3000);
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) ;
-
-
-  }
+	}
 }
 
 #if 0
@@ -151,32 +260,32 @@ int i;
                          C4   C4   D4   C4   F4   E4   C4   C4   D4   C4   G4 */
 unsigned int notes[] = { 262, 262, 294, 262, 349, 330, 262, 262, 294, 262, 392,
 
-/*                       you, Hap py  Birth Day  dear  xxxx      Hap  py   birth
+		/*                       you, Hap py  Birth Day  dear  xxxx      Hap  py   birth
                          F4   C4   C4   C5   A4   F4   E4   D4   B4b  B4b  A4 */
-                         349, 262, 262, 523, 440, 349, 330, 294, 466, 466, 440,
+		349, 262, 262, 523, 440, 349, 330, 294, 466, 466, 440,
 
-/*                       day  to  you
+		/*                       day  to  you
                          F4   G4   F4   */
-                         349, 392, 349
-                        };
+		349, 392, 349
+};
 
 enum note1
 {
-  C4 = 262, // 도(261.63Hz)
-  D4 = 294, // 래(293.66Hz)
-  E4 = 330, // 미(329.63Hz)
-  F4 = 349, // 파(349.23Hz)
-  G4 = 392, // 솔(392.00Hz)
-  A4 = 440, // 라(440.00Hz)
-  B4 = 494, // 시(493.88Hz)
-  C5 = 523  // 도(523.25Hz)
+	C4 = 262, // 도(261.63Hz)
+	D4 = 294, // 래(293.66Hz)
+	E4 = 330, // 미(329.63Hz)
+	F4 = 349, // 파(349.23Hz)
+	G4 = 392, // 솔(392.00Hz)
+	A4 = 440, // 라(440.00Hz)
+	B4 = 494, // 시(493.88Hz)
+	C5 = 523  // 도(523.25Hz)
 };
 
 /* 학교종
  * 솔 솔 라 라 솔 솔 미 솔 솔 미 미 래
  * 솔 솔 라 라 솔 솔 미 솔 미 래 미 도*/
 enum note1 A[] = {G4,G4,A4,A4,G4,G4,E4,G4,G4,E4,E4,D4,
-                  G4,G4,A4,A4,G4,G4,E4,G4,E4,D4,E4,C4};
+		G4,G4,A4,A4,G4,G4,E4,G4,E4,D4,E4,C4};
 
 
 unsigned int duration[] = {1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,1,1,2,2,2,2};
@@ -184,32 +293,32 @@ unsigned int duration[] = {1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,1,1,2,2,2,2};
 
 void noTone()
 {
-    htim1.Instance->CCR1=0;
-    HAL_Delay(50);
+	htim1.Instance->CCR1=0;
+	HAL_Delay(50);
 }
 
 void playSong()
 {
 
-    for (int i = 0 ; i < 24; i++)
-    {
+	for (int i = 0 ; i < 24; i++)
+	{
 		Frequency = CLOCK/A[i];
 		htim1.Instance->ARR=Frequency;
 		htim1.Instance->CCR1=Frequency/2;  // OK
 		HAL_Delay(400*duration[i]);
 		noTone();
-    }
+	}
 
-    HAL_Delay(5000);
+	HAL_Delay(5000);
 
-    for (i = 0; i <25; i++)
-    {
+	for (i = 0; i <25; i++)
+	{
 		Frequency = CLOCK/notes[i];
 		htim1.Instance->ARR=Frequency;
 		htim1.Instance->CCR1=Frequency/2;  // OK
 		HAL_Delay(400*duration[i]);
 		noTone();
-    }
+	}
 
 
 }
