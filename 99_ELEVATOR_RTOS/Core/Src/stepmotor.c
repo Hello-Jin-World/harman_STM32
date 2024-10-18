@@ -152,7 +152,7 @@ void stepmotor_forward(void)
 
 		stepmotor_state = STEPMOTOR_STOP;
 	}
-	delay_us(126);
+	delay_us(126); // consider osDelay 1ms
 //	set_rmp(13); // wait for 1126us
 
 }
