@@ -52,8 +52,8 @@ void get_rtc_date_time(void)
 		if (pdatetime) // equal -> if (pdatetime >= 1)
 		{
 			// Format -> YYYY-MM-DD HH:mm:ss
-			printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+//			printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+//					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 #if 1 // first line : date, second line : time
 			sprintf(lcd_buff, "%2d-%2d-%2d", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date));
@@ -138,8 +138,8 @@ void get_rtc_date(void)
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
 		// Format -> YYYY-MM-DD HH:mm:ss
-		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 		sprintf(lcd_buff, "%2d-%2d-%2d", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date));
 		move_cursor(0, 0);
@@ -161,9 +161,8 @@ void get_rtc_time(void)
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
 		// Format -> YYYY-MM-DD HH:mm:ss
-		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
-
+//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 		sprintf(lcd_buff, "%2d:%2d:%2d", bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 		move_cursor(1, 0);
