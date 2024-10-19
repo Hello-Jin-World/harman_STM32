@@ -206,6 +206,7 @@ printf("HAL_TIM_Base_Start!!!!!\n");
 init_arrow_up();
 init_arrow_down();
 init_floor_select(100);
+//reset_floor_select();
 //stepmotor_main();
 //DHT11_Init();
 i2c_lcd_init();

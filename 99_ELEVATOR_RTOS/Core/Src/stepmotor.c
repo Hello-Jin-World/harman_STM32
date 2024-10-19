@@ -24,7 +24,7 @@ int j = 0;
 int stepmotor_state = 0;
 int floor_select_state = 0;
 int current_floor_state = 0;
-int floor_select_list[4] = {0, };  // 동적 할당을 위한 포인터
+uint8_t *floor_select_list = NULL;  // 동적 할당을 위한 포인터
 int floor_select_size = 0;      // 동적 할당할 배열 크기
 int wow = 0;
 int lets_stop = 0;
@@ -176,10 +176,7 @@ void init_floor_select(int size)
 
 void reset_floor_select(void)
 {
-	for (int i = 0; i < floor_select_size; i++)
-	{
-		floor_select_list[i] = 255;
-	}
+	 memset(floor_select_list, 255, floor_select_size * sizeof(int));
 
 	// wow 초기화
 	wow = 0;
@@ -210,12 +207,12 @@ void stepmotor_stop(void)
 		}
 		if (TIM10_DHT11_counter > 5000)
 		{
-			/*if (floor_select_list[wow2+1] > 10 || floor_select_list[wow2+1] < 0)
+			if (floor_select_list[wow2+1] > 10 || floor_select_list[wow2+1] < 0)
 			{
 				reset_floor_select();
 				lets_stop = 0;
 				printf("255 255 255 255 255 255 255\n");
-			}*/
+			}
 
 			if (floor_select_list[wow2+1] > current_floor_state)// && (floor_select_list[wow2+1] != 255))
 			{
