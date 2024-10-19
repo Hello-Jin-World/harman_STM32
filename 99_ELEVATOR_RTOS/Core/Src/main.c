@@ -128,6 +128,7 @@ extern void buzzer_main();
 extern void get_rtc_date(void);
 extern void get_rtc_time(void);
 extern void select_floor(void);
+extern void init_floor_select(int size);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -204,6 +205,7 @@ printf("HAL_TIM_Base_Start!!!!!\n");
 //buzzer_main();
 init_arrow_up();
 init_arrow_down();
+init_floor_select(100);
 //stepmotor_main();
 //DHT11_Init();
 i2c_lcd_init();
@@ -755,6 +757,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  //stepmotor_main();
 	  //servomotor_main();
 	//button_check();
 	//DHT11_processing();
@@ -822,7 +825,7 @@ void StartTask02(void *argument)
 		}
 		//servo_motor_control();
 		select_floor();
-		//stepmotor_main();
+
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
 #if 1 // use timer/counter
 		if( TIM10_1ms_counter >= 50)
