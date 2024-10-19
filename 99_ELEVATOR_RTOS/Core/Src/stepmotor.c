@@ -18,12 +18,13 @@ void stepmotor_backward(void);
 void stepmotor_stop(void);
 void select_floor(void);
 void init_floor_select(int size);
+void reset_floor_select(void);
 
 int j = 0;
 int stepmotor_state = 0;
 int floor_select_state = 0;
 int current_floor_state = 0;
-int *floor_select_list = NULL;  // 동적 할당을 위한 포인터
+int floor_select_list[4] = {0, };  // 동적 할당을 위한 포인터
 int floor_select_size = 0;      // 동적 할당할 배열 크기
 int wow = 0;
 int lets_stop = 0;
@@ -79,7 +80,6 @@ void select_floor(void)
 	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 	{
 		lets_stop = 1;
-		floor_select_list[wow] = floor_select_state;
 #if 1
 		// 현재 선택된 층이 이미 리스트에 있는지 확인
 		for (int i = 0; i < wow; i++)
@@ -171,15 +171,21 @@ void init_floor_select(int size)
     }
 
     // 리스트 초기화
-
-    for (int i = 0; i < floor_select_size; i++)
-    {
-        floor_select_list[i] = 255;  // 255로 초기화하여 비어있는 값 표시
-    }
-
-    wow = 0;  // 초기 상태에서 리스트는 비어 있음
+    reset_floor_select();
 }
 
+void reset_floor_select(void)
+{
+	for (int i = 0; i < floor_select_size; i++)
+	{
+		floor_select_list[i] = 255;
+	}
+
+	// wow 초기화
+	wow = 0;
+
+	printf("list reset!!!!\n");
+}
 
 void free_floor_select(void)
 {
@@ -200,19 +206,25 @@ void stepmotor_stop(void)
 		if (TIM10_DHT11_counter <= 5000)
 		{
 			stepmotor_drive(j);
+
 		}
 		if (TIM10_DHT11_counter > 5000)
 		{
-			if (floor_select_list[wow2+1] > current_floor_state)
+			/*if (floor_select_list[wow2+1] > 10 || floor_select_list[wow2+1] < 0)
 			{
+				reset_floor_select();
+				lets_stop = 0;
+				printf("255 255 255 255 255 255 255\n");
+			}*/
+
+			if (floor_select_list[wow2+1] > current_floor_state)// && (floor_select_list[wow2+1] != 255))
+			{
+				printf("%d\n",floor_select_list[wow2+1]);
+
 				stepmotor_state = STEPMOTOR_FORWARD;
 				wow2++;
 			}
-			else if (floor_select_list[wow2+1] == 255)
-			{
-				stepmotor_drive(j);
-				wow = 0;
-			}
+
 			else
 			{
 				stepmotor_drive(j);
