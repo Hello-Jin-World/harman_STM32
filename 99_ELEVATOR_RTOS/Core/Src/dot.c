@@ -443,7 +443,7 @@ void arrow_display_stepmotor(void)
 
 void arrow_display(void)
 {
-	if (stepmotor_state == STEPMOTOR_STOP)
+	if (stepmotor_state == STEPMOTOR_STOP || stepmotor_state == GET_UP_BUTTON || stepmotor_state == GET_DOWN_BUTTON)
 	{
 		if (current_floor_state == FLOOR1)
 		{

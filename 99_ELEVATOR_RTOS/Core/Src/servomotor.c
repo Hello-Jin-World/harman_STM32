@@ -1,12 +1,18 @@
 #include "servomotor.h"
+#include "stepmotor.h"
 #define servo0 0
 #define servo180 1
 
 extern volatile int TIM10_servomotor_counter;
 extern TIM_HandleTypeDef htim3;
+extern int stepmotor_state;
+extern volatile int TIM10_elevator_counter;
 
 void servomotor_main(void);
 void servo_motor_control(void);
+void elevator_door_control(void);
+void open_the_door(void);
+void close_the_door(void);
 
 /* system clock = 84Mhz
  * Timer3 enter 50khz : prescaler 1/1680 -> 50khz
@@ -66,4 +72,34 @@ void servo_motor_control(void)
 	}
 
 
+}
+
+//void elevator_door_control(void)
+//{
+//	static int door_state = CLOSE_THE_DOOR;
+//
+//	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, door_state); // 2ms(180') : 0.00002 x 100
+//
+//	if(stepmotor_state == STEPMOTOR_STOP)
+//	{
+//		if (TIM10_elevator_counter > 1000 && TIM10_elevator_counter < 4000)
+//		{
+//			door_state = OPEN_THE_DOOR;
+//		}
+//
+//		else if ((TIM10_elevator_counter > 0 && TIM10_elevator_counter < 1000) || (TIM10_elevator_counter > 4000 && TIM10_elevator_counter < 5000))
+//		{
+//			door_state = CLOSE_THE_DOOR;
+//		}
+//	}
+//}
+
+void open_the_door(void)
+{
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, OPEN_THE_DOOR); // 2ms(180') : 0.00002 x 100
+}
+
+void close_the_door(void)
+{
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, CLOSE_THE_DOOR); // 2ms(180') : 0.00002 x 100
 }

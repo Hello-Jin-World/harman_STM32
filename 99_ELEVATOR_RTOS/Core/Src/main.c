@@ -81,7 +81,7 @@ const osMutexAttr_t myMutex01_attributes = {
 /* USER CODE BEGIN PV */
 volatile int TIM10_1ms_counter = 0;  // ADD_PSJ_0930
 volatile int TIM10_1ms_counter1 = 0;
-volatile int TIM10_DHT11_counter = 0;
+volatile int TIM10_elevator_counter = 0;
 volatile int TIM10_servomotor_counter = 0;
 uint8_t rx_data;
 /* USER CODE END PV */
@@ -129,6 +129,8 @@ extern void get_rtc_date(void);
 extern void get_rtc_time(void);
 extern void select_floor(void);
 extern void init_floor_select(int size);
+extern void elevator_door_control(void);
+extern void close_the_door(void);;
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -203,9 +205,9 @@ int main(void)
 printf("HAL_TIM_Base_Start!!!!!\n");
 //playSong();
 //buzzer_main();
+close_the_door();
 init_arrow_up();
 init_arrow_down();
-init_floor_select(100);
 //reset_floor_select();
 //stepmotor_main();
 //DHT11_Init();
@@ -782,6 +784,7 @@ void StartTask01(void *argument)
   {
 #if 1
 	  //arrow_display_stepmotor();
+	  //elevator_door_control();
 	  arrow_display();
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
@@ -862,7 +865,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM10) { // add PSJ 0930
       TIM10_1ms_counter++;
       TIM10_1ms_counter1++;
-      TIM10_DHT11_counter++;
+      TIM10_elevator_counter++;
       TIM10_servomotor_counter++;
    }
   /* USER CODE END Callback 1 */
