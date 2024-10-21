@@ -2,12 +2,11 @@
 #include "button.h"
 #include "stepmotor.h"
 
-//extern SPI_HandleTypeDef hspi2;
-extern volatile int TIM10_1ms_counter1;
 extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
 extern void write_ds_75hc595(unsigned char data);
 extern void latch_clock(void);
 extern int current_floor_state;
+extern volatile int TIM10_1ms_counter;  // ADD_PSJ_0930
 
 extern int stepmotor_state;
 
@@ -20,49 +19,6 @@ void init_arrow_down(void);
 void arrow_display(void);
 void arrow_display_stepmotor(void);
 
-uint8_t allon[] = {			// Definition for all LEDs on
-		0b11111111,
-		0b11111111,
-		0b11111111,
-		0b11111111,
-		0b11111111,
-		0b11111111,
-		0b11111111,
-		0b11111111
-};
-
-
-uint8_t smile[] = {			// Definition for smiley face
-		0b00111100,
-		0b01000010,
-		0b10010101,
-		0b10100001,
-		0b10100001,
-		0b10010101,
-		0b01000010,
-		0b00111100 };
-
-uint8_t hart[] = {		// Definition for heart shape
-		0b00000000,
-		0b01100110,
-		0b10011001,
-		0b10000001,
-		0b10000001,
-		0b01000010,
-		0b00100100,
-		0b00011000
-};
-
-uint8_t neko[] = {		// Definition for cat face
-		0b01000010,
-		0b10100101,
-		0b01111110,
-		0b10000001,
-		0b10100101,
-		0b10100101,
-		0b10000001,
-		0b01111110
-};
 
 uint8_t one[] =
 {
@@ -116,176 +72,6 @@ uint8_t four[] =
 
 uint8_t col[4] = {0, 0, 0, 0};
 
-void dotmatrix_main_test()
-{
-	// dotmatrix_main();
-
-	while (1)
-	{
-		for (int i=0; i < 8; i++)
-		{
-			col[0] = ~(1 << i);  // 00000001  --> 11111110
-			col[1] = neko[i];
-			write_ds_75hc595(col[0]);
-			write_ds_75hc595(col[1]);
-			latch_clock();
-			//HAL_SPI_Transmit(&hspi2, col, 2, 1);
-			//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
-			//GPIOB->ODR |= GPIO_PIN_15;    // Pull-up latch pin
-			HAL_Delay(1);
-		}
-	}
-}
-
-uint8_t number_data[20][10] =
-{
-		{
-				0b01110000,	//0
-				0b10001000,
-				0b10011000,
-				0b10101000,
-				0b11001000,
-				0b10001000,
-				0b01110000,
-				0b00000000
-		},
-		{
-				0b01000000,	//1
-				0b11000000,
-				0b01000000,
-				0b01000000,
-				0b01000000,
-				0b01000000,
-				0b11100000,
-				6   // Dot 0b00000110
-		},
-		{
-				0b01110000,	//2
-				0b10001000,
-				0b00001000,
-				0b00010000,
-				0b00100000,
-				0b01000000,
-				0b11111000,
-				6
-		},
-		{
-				0b11111000,	//3
-				0b00010000,
-				0b00100000,
-				0b00010000,
-				0b00001000,
-				0b10001000,
-				0b01110000,
-				6
-		},
-		{
-				0b00010000,	//4
-				0b00110000,
-				0b01010000,
-				0b10010000,
-				0b11111000,
-				0b00010000,
-				0b00010000,
-				6
-		},
-		{
-				0b11111000,	//5
-				0b10000000,
-				0b11110000,
-				0b00001000,
-				0b00001000,
-				0b10001000,
-				0b01110000,
-				6
-		},
-		{
-				0b00110000,	//6
-				0b01000000,
-				0b10000000,
-				0b11110000,
-				0b10001000,
-				0b10001000,
-				0b01110000,
-				6
-		},
-		{
-				0b11111000,	//7
-				0b10001000,
-				0b00001000,
-				0b00010000,
-				0b00100000,
-				0b00100000,
-				0b00100000,
-				6
-		},
-		{
-				0b01110000,	//8
-				0b10001000,
-				0b10001000,
-				0b01110000,
-				0b10001000,
-				0b10001000,
-				0b01110000,
-				6
-		},
-		{
-				0b01110000,	//9
-				0b10001000,
-				0b10001000,
-				0b01111000,
-				0b00001000,
-				0b00010000,
-				0b01100000,
-				6
-		},
-		{
-				0b00000000,    // Heart shape
-				0b01100110,
-				0b11111111,
-				0b11111111,
-				0b11111111,
-				0b01111110,
-				0b00111100,
-				0b00011000
-		}
-};
-
-uint8_t my_name[20][10] =
-{
-		{
-				0B00000000,
-				0B01010100,
-				0B01110110,
-				0B01010100,
-				0B01110100,
-				0B00000000,
-				0B00111100,
-				0B00000100
-		},
-
-		{
-				0B00000000,
-				0B00100010,
-				0B01010010,
-				0B01010110,
-				0B00000010,
-				0B00001000,
-				0B00010100,
-				0B00001000
-		},
-
-		{
-				0B00000000,
-				0B01110100,
-				0B00100100,
-				0B01010100,
-				0B00000000,
-				0B00100000,
-				0B00111100,
-				0B00000000
-		}
-};
 
 uint8_t arrow_up[] =
 {
@@ -322,22 +108,7 @@ int number_of_character = 11;  // Number of characters to display
 // 1. Copy number_data[0] contents to display_data
 // 2. Copy number_data to scroll_buffer
 // 3. Turn off LEDs on dot matrix
-void init_dotmatrix(void)
-{
-	for (int i=0; i < 8; i++)
-	{
-		display_data[i] = number_data[i];
-	}
-	for (int i=1; i < number_of_character-6; i++)
-	{
-		for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
-		{
-			scroll_buffer[i][j] = number_data[i-1][j];
-		}
-	}
-}
 
-#if 1
 void init_arrow_up(void)
 {
 	for (int i=0; i < 8; i++)
@@ -365,6 +136,7 @@ void arrow_display_up(void)
 {
 	static uint32_t past_time=0;  // get pre_tick value
 	uint32_t now = HAL_GetTick();  // Current time
+	static int i = 0;
 
 	// Shift arrow upwards every 500ms
 	if (now - past_time >= 200)
@@ -381,22 +153,31 @@ void arrow_display_up(void)
 	}
 
 	// Output display_data
-	for (int i = 0; i < 8; i++)
+	//	for (int i = 0; i < 8; i++)
+	//	{
+
+	if (TIM10_1ms_counter >= 1)
 	{
+		TIM10_1ms_counter = 0;
 		col[0] = ~(1 << i);  // 00000001  --> 11111110
 		col[1] = display_data_up[i];
 		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
 		write_ds_75hc595(col[0]);
 		write_ds_75hc595(col[1]);
 		latch_clock();
-		//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
-		//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
-		HAL_Delay(1);
+		i++;
+		i %= 8;
 	}
+	//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
+	//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
+
+	//		HAL_Delay(1);
+	//	}
 }
 
 void arrow_display_down(void)
 {
+	static int i = 0;
 	static uint32_t past_time = 0;  // Store previous tick value
 	uint32_t now = HAL_GetTick();  // Current time
 
@@ -415,18 +196,24 @@ void arrow_display_down(void)
 	}
 
 	// Output display_data
-	for (int i = 0; i < 8; i++)
+	//	for (int i = 0; i < 8; i++)
+	//	{
+	if (TIM10_1ms_counter >= 1)
 	{
+		TIM10_1ms_counter = 0;
 		col[0] = ~(1 << i);  // 00000001  --> 11111110
 		col[1] = display_data_down[i];
 		write_ds_75hc595(col[0]);
 		write_ds_75hc595(col[1]);
 		latch_clock();
-		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
-		//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
-		//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
-		HAL_Delay(1);
+		i++;
+		i %= 8;
 	}
+	//HAL_SPI_Transmit(&hspi2, col, 2, 1);
+	//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
+	//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
+	//		HAL_Delay(1);
+	//	}
 }
 
 void arrow_display_stepmotor(void)
@@ -511,120 +298,7 @@ void arrow_display(void)
 	}
 }
 
-#else
-int arrow_up = 0;
-int arrow_down = 0;
 
-void arrow_dispaly(void)
-{
-	static int j = 1;
-	static int k = 0;
-	static int countj=0;  // Column count
-	static int countk=0;  // Column count
-	static int index=0;  // 2D index value of scroll_buffer
-	static uint32_t past_time=0;  // Store previous tick value
-
-	uint32_t now = HAL_GetTick();  // 1ms
-	// 1. At start, past_time=0; now: 500 --> past_time=500
-	if (arrow_up)
-	{
-		if (now - past_time >= 100) // 500ms scroll
-		{
-
-			past_time = now;
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = (scroll_buffer[index][j++]) |
-						(scroll_buffer[index][j]);
-
-			}
-			j++;
-			j%=9;
-		}
-	}
-	else if (arrow_down)
-	{
-		if (now - past_time >= 100) // 500ms scroll
-		{
-
-			past_time = now;
-			for (int i=0; i < 8; i++)
-			{
-				display_data[i] = (scroll_buffer[index][j]) |
-						(scroll_buffer[index][j--]);
-
-			}
-			j--;
-			if (j <= 0)
-			{
-				j = 100;
-			}
-		}
-	}
-
-	if (arrow_up == 0 && arrow_down == 0)
-	{
-		for (int i=0; i < 8; i++)
-		{
-			display_data[i] = 0;
-		}
-	}
-	for (int i=0; i < 8; i++)
-	{
-		// Common anode mode
-		// Column should be 0 and Row should be 1 for the corresponding LED to turn on.
-		col[0] = ~(1 << i);  // 00000001  --> 11111110
-		col[1] = display_data[i];
-		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
-		GPIOB->ODR &= ~GPIO_PIN_15;   // Pull-down latch pin
-		GPIOB->ODR |= GPIO_PIN_15;   // Pull-up latch pin
-		HAL_Delay(1);
-	}
-	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_up == 0)
-	{
-		for (int i=0; i < 8; i++)
-		{
-			display_data[i] = 0;
-		}
-		arrow_down = 0;
-		arrow_up = 1;
-		for (int i=0; i < 8; i++)
-		{
-			display_data[i] = arrow[i];
-		}
-		for (int i=1; i < number_of_character+1; i++)
-		{
-			for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
-			{
-				scroll_buffer[i][j] = arrow[0][j];
-			}
-		}
-	}
-
-	else if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS && arrow_down == 0)
-	{
-		for (int i=0; i < 8; i++)
-		{
-			display_data[i] = 0;
-		}
-		arrow_down = 1;
-		arrow_up = 0;
-		for (int i=0; i < 8; i++)
-		{
-			display_data[i] = arrow[i];
-		}
-		for (int i=1; i < number_of_character+1; i++)
-		{
-			for (int j=0; j < 8; j++) // scroll_buffer[0] = blank
-			{
-				scroll_buffer[i][j] = arrow[1][j];
-			}
-		}
-	}
-
-
-}
-#endif
 
 int dotmatrix_command = 0;
 int dotmatrix_clear = 1;

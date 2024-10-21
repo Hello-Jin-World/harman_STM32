@@ -7,6 +7,7 @@ void set_buzzer(int frequency);
 void rrr(void);
 void siren(int repeat);
 void fire_truck(void);
+void ev_bell(void);
 
 /*************************************************************************************************************
 
@@ -113,6 +114,22 @@ void set_buzzer(int frequency)
 
 	__HAL_TIM_SET_AUTORELOAD(&htim1, divide_freq / frequency); // PWM value
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, divide_freq / frequency / 2);  // Duty를 50%로 설정 한다.
+}
+
+void ev_bell(void)
+{
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+	set_buzzer(261);
+	HAL_Delay(300);
+	set_buzzer(329);
+	HAL_Delay(300);
+	set_buzzer(392);
+	HAL_Delay(300);
+//	// stop
+//	noTone();
+//	HAL_Delay(4200);
+HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
 }
 
 void beep(int repeat)

@@ -23,7 +23,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -130,7 +129,9 @@ extern void get_rtc_time(void);
 extern void select_floor(void);
 extern void init_floor_select(int size);
 extern void elevator_door_control(void);
-extern void close_the_door(void);;
+extern void close_the_door(void);
+extern void lcd_floor(void);
+extern void lcd_floor_check(void);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -763,6 +764,7 @@ void StartDefaultTask(void *argument)
 	  //stepmotor_main();
 	  //servomotor_main();
 	//button_check();
+
 	//DHT11_processing();
     osDelay(1);
   }
@@ -785,17 +787,18 @@ void StartTask01(void *argument)
 #if 1
 	  //arrow_display_stepmotor();
 	  //elevator_door_control();
-	  arrow_display();
+
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
-		if (osMutexAcquire(myMutex01Handle, 1000) == osOK) // Lock
+		if (osMutexAcquire(myMutex01Handle, 10000) == osOK) // Lock
 		{
 			// Lock state
-			get_rtc_time();
+			lcd_floor();
 
 			osMutexRelease(myMutex01Handle); // unlock
 			// switching other task
 		}
+		select_floor();
 #else
 	  //ledbar0_toggle();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
@@ -819,17 +822,17 @@ void StartTask02(void *argument)
   /* Infinite loop */
 	for(;;)
 	{
-		if (osMutexWait(myMutex01Handle, 1000) == osOK) // Lock (Prevent the I2C LCD protocol from getting tangled)
+		if (osMutexWait(myMutex01Handle, 10000) == osOK) // Lock (Prevent the I2C LCD protocol from getting tangled)
 		{
 			// Lock state
-			get_rtc_date();
+			lcd_floor_check();
 
 			osMutexRelease(myMutex01Handle); // unlock
 			// switching other task
 		}
 		//servo_motor_control();
-		select_floor();
 
+		arrow_display();
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
 #if 1 // use timer/counter
 		if( TIM10_1ms_counter >= 50)

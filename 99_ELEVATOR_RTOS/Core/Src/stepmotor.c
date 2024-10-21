@@ -12,6 +12,7 @@ extern void close_the_door(void);
 extern volatile int TIM10_1ms_counter1;
 extern volatile int TIM10_elevator_counter;
 extern TIM_HandleTypeDef htim3;
+extern void ev_bell(void);
 
 void set_rmp(int rmp);
 void stepmotor_drive(int step);
@@ -31,8 +32,9 @@ int current_floor_state = 0;
 int floor_select_list[4] = {NOT_SELECTED, NOT_SELECTED, NOT_SELECTED, NOT_SELECTED}; // Not Selected ==>  -1
 // If all elements are -1, it means "No floor is selected"
 int interrupt_floor = 0; // It returns 1 each time it reaches a floor
-int now_up_down_state = ELEVATOR_CLOSED; // If it is rising, UP_STATE // If it is falling, DOWN_STATE
+int now_up_down_state = NONE_STATE; // If it is rising, UP_STATE // If it is falling, DOWN_STATE
 int door_state = CLOSE_THE_DOOR;
+int reset_toggle = 0;
 
 void (*stepmotor_funcp[])() =
 {
@@ -45,10 +47,13 @@ void (*stepmotor_funcp[])() =
 
 void select_floor(void)
 {
+	//lcd_floor();
+
 	(*stepmotor_funcp[stepmotor_state])();
 
 	if (get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
 	{
+		reset_toggle = 1;
 
 		if (now_up_down_state == NONE_STATE)
 		{
@@ -58,7 +63,7 @@ void select_floor(void)
 			{
 				stepmotor_state = STEPMOTOR_FORWARD;
 			}
-			else if (floor_select_state < current_floor_state)
+			if (floor_select_state < current_floor_state)
 			{
 				stepmotor_state = STEPMOTOR_BACKWARD;
 			}
@@ -99,6 +104,8 @@ void select_floor(void)
 			// When falling, it only saves the input floor value if the entered floor value is lower than the current floor.
 			floor_select_list[floor_select_state] = floor_select_state;
 		}
+
+		//lcd_floor_check();
 
 		for (int i = 0; i < 4; i++) {
 			printf("%d ", floor_select_list[i]);
@@ -141,8 +148,12 @@ void stepmotor_stop(void)
 	if (floor_select_list[FLOOR1] == NOT_SELECTED && floor_select_list[FLOOR2] == NOT_SELECTED && floor_select_list[FLOOR3] == NOT_SELECTED && floor_select_list[FLOOR4] == NOT_SELECTED)
 	{
 		// If all the selected floors are reached, it resets the array to prepare for receiving new floors.
+		if (reset_toggle)
+		{
+			reset_floor_select();
+			reset_toggle = 0;
+		}
 		stepmotor_drive(j);
-		reset_floor_select();
 
 		if (get_button(GPIOC, GPIO_PIN_3, BUTTON3) == BUTTON_PRESS)
 		{
@@ -165,12 +176,13 @@ void stepmotor_stop(void)
 	{
 		if (TIM10_elevator_counter <= 5000) // Stop for 5 seconds.
 		{
+			ev_bell();
 			if (TIM10_elevator_counter > 1500 && TIM10_elevator_counter < 3500)
 			{
 				// open the door
 				door_state = OPEN_THE_DOOR;
 			}
-			else
+			else if (TIM10_elevator_counter > 3500 && TIM10_elevator_counter < 4000)
 			{
 				// close the door
 				door_state = CLOSE_THE_DOOR;
@@ -180,6 +192,9 @@ void stepmotor_stop(void)
 
 		if (TIM10_elevator_counter > 5000)
 		{
+			//lcd_floor_check();
+
+
 			floor_select_list[current_floor_state] = NOT_SELECTED;
 
 			TIM10_elevator_counter = 0;
@@ -220,13 +235,13 @@ void stepmotor_stop(void)
 void stepmotor_forward(void)
 {
 	now_up_down_state = UP_STATE;
-	if (TIM10_1ms_counter1 >= 1)
-	{
+//	if (TIM10_1ms_counter1 >= 1)
+//	{
 		stepmotor_drive(j);
 		j++;
 		j %= 8;
 		TIM10_1ms_counter1 = 0;
-	}
+//	}
 	// If it reaches a floor and there is a value in the array(floor_select_list) for that floor, it stops.
 	if (floor_select_list[current_floor_state] == current_floor_state && interrupt_floor)
 	{
@@ -236,15 +251,15 @@ void stepmotor_forward(void)
 	}
 
 	//delay_us(126); // consider osDelay 1ms
-	//	set_rmp(13); // wait for 1126us
+	set_rmp(13); // wait for 1126us
 
 }
 
 void stepmotor_backward(void)
 {
 	now_up_down_state = DOWN_STATE;
-	if (TIM10_1ms_counter1 >= 1)
-	{
+//	if (TIM10_1ms_counter1 >= 1)
+//	{
 		stepmotor_drive(j);
 		j--;
 		if (j < 0)
@@ -252,7 +267,7 @@ void stepmotor_backward(void)
 			j = 7;
 		}
 		TIM10_1ms_counter1 = 0;
-	}
+//	}
 	// If it reaches a floor and there is a value in the array(floor_select_list) for that floor, it stops.
 	if (floor_select_list[current_floor_state] == current_floor_state && interrupt_floor)
 	{
@@ -260,14 +275,15 @@ void stepmotor_backward(void)
 		TIM10_elevator_counter = 0;
 		stepmotor_state = STEPMOTOR_STOP;
 	}
-	//set_rmp(13); // wait for 1126us
+	//delay_us(126); // consider osDelay 1ms
+	set_rmp(13); // wait for 1126us
 }
 
 void get_up_button(void)
 {
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, door_state);
 
-	if (TIM10_elevator_counter > 2500)
+	if (TIM10_elevator_counter > 2500 && TIM10_elevator_counter < 3000)
 	{
 		door_state = CLOSE_THE_DOOR;
 	}
@@ -279,7 +295,7 @@ void get_down_button(void)
 {
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, door_state);
 
-	if (TIM10_elevator_counter > 2500)
+	if (TIM10_elevator_counter > 2500 && TIM10_elevator_counter < 3000)
 	{
 		door_state = CLOSE_THE_DOOR;
 	}

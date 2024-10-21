@@ -3,6 +3,10 @@
 #include <stdlib.h> // atoi itoa ...
 
 #include "extern.h"
+#include "stepmotor.h"
+
+extern int floor_select_list[4];
+extern int interrupt_floor;
 
 void get_rtc_date_time(void);
 void set_rtc(char *date_time);
@@ -11,6 +15,8 @@ unsigned char bcd2dec(unsigned char byte);
 
 void get_rtc_date(void);
 void get_rtc_time(void);
+void lcd_floor(void);
+void lcd_floor_check(void);
 
 RTC_TimeTypeDef sTime = {0}; // Time Information
 RTC_DateTypeDef sDate = {0}; // Date Information
@@ -52,8 +58,8 @@ void get_rtc_date_time(void)
 		if (pdatetime) // equal -> if (pdatetime >= 1)
 		{
 			// Format -> YYYY-MM-DD HH:mm:ss
-//			printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-//					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+			//			printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+			//					, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 #if 1 // first line : date, second line : time
 			sprintf(lcd_buff, "%2d-%2d-%2d", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date));
@@ -138,8 +144,8 @@ void get_rtc_date(void)
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
 		// Format -> YYYY-MM-DD HH:mm:ss
-//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+		//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+		//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 		sprintf(lcd_buff, "%2d-%2d-%2d", bcd2dec(sDate.Year), bcd2dec(sDate.Month), bcd2dec(sDate.Date));
 		move_cursor(0, 0);
@@ -161,13 +167,39 @@ void get_rtc_time(void)
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
 		// Format -> YYYY-MM-DD HH:mm:ss
-//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
-//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
+		//		printf("%4d-%2d-%2d %2d:%2d:%2d\n", bcd2dec(sDate.Year) + 2000, bcd2dec(sDate.Month), bcd2dec(sDate.Date)
+		//				, bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 
 		sprintf(lcd_buff, "%2d:%2d:%2d", bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 		move_cursor(1, 0);
 		lcd_string(lcd_buff);
 
 		oldTime.Seconds = sTime.Seconds; // update Second
+	}
+}
+
+void lcd_floor(void)			// lcd first line
+{
+	char lcd_buff[24];
+	sprintf(lcd_buff, "F1 F2 F3 F4");
+	move_cursor(0, 0);
+	lcd_string(lcd_buff);
+}
+
+void lcd_floor_check(void)		// lcd second line
+{
+	char lcd_buff[40];
+
+	if (interrupt_floor)
+	{
+		// 두 번째 줄에 'O' 또는 공백 출력
+		sprintf(lcd_buff, "%c  %c  %c  %c",
+				(floor_select_list[FLOOR1] != NOT_SELECTED) ? 'O' : ' ',
+						(floor_select_list[FLOOR2] != NOT_SELECTED) ? 'O' : ' ',
+								(floor_select_list[FLOOR3] != NOT_SELECTED) ? 'O' : ' ',
+										(floor_select_list[FLOOR4] != NOT_SELECTED) ? 'O' : ' ');
+
+		move_cursor(1, 0); // 두 번째 줄의 시작 위치로 커서 이동
+		lcd_string(lcd_buff); // 문자열 출력
 	}
 }
