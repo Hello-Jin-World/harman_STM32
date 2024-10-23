@@ -10,6 +10,7 @@ extern void set_rtc(char *date_time);
 extern int dotmatrix_command;
 extern int dotmatrix_clear;
 
+
 void pc_command_processing();
 
 extern UART_HandleTypeDef huart2;
@@ -47,10 +48,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			rear %= COMMAND_NUMBER;
 			// add queue full check logic
 
-//			if ((rear + 1) % 10 == front)
-//			{
-//				toggle_full = 1;
-//			}
+			//			if ((rear + 1) % 10 == front)
+			//			{
+			//				toggle_full = 1;
+			//			}
 		}
 		else
 		{
@@ -136,6 +137,10 @@ void pc_command_processing(void)
 		{
 			dotmatrix_command = 0;
 			dotmatrix_clear = 1;
+		}
+		else if(strncmp(rx_buffer[front], "set_alarm_time", strlen("set_alarm_time")) == 0)
+		{
+			set_alarm_time(&rx_buffer[front][strlen("set_alarm_time")]);
 		}
 		front++;
 		front %= COMMAND_NUMBER;

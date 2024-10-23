@@ -127,6 +127,9 @@ extern void servo_motor_control(void);
 extern void buzzer_main();
 extern void get_rtc_date(void);
 extern void get_rtc_time(void);
+extern void flash_main(void);
+extern void flash_set_time(void);
+extern void alarm_clock(void);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -205,13 +208,21 @@ printf("HAL_TIM_Base_Start!!!!!\n");
 //init_arrow_down();
 //stepmotor_main();
 //DHT11_Init();
-i2c_lcd_init();
+//i2c_lcd_init();
 //init_dotmatrix();
 //dotmatrix_main();
 //i2c_lcd_main(); // for checking LCD operation temporary.
 //led_main(); // for checking LED operation temporary.
 //DHT11_main(); // for checking DHT11 operation temporary.
 //dotmatrix_main_test();
+
+//while(1)
+//{
+//	flash_set_time();
+//	pc_command_processing();
+//	//flash_main();
+//	HAL_Delay(1000);
+//}
 
   /* USER CODE END 2 */
 
@@ -263,8 +274,9 @@ i2c_lcd_init();
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
-	  HAL_Delay(100);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -389,8 +401,8 @@ static void MX_RTC_Init(void)
 
   /** Initialize RTC and set the Time and Date
   */
-  sTime.Hours = 0x14;
-  sTime.Minutes = 0x38;
+  sTime.Hours = 0x15;
+  sTime.Minutes = 0x32;
   sTime.Seconds = 0x0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
@@ -401,7 +413,7 @@ static void MX_RTC_Init(void)
   sDate.WeekDay = RTC_WEEKDAY_TUESDAY;
   sDate.Month = RTC_MONTH_OCTOBER;
   sDate.Date = 0x8;
-  sDate.Year = 0x0;
+  sDate.Year = 0x24;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
   {
@@ -777,14 +789,20 @@ void StartTask01(void *argument)
 	  //arrow_display();
 	  //dotmatrix_main_func();
 	  //get_rtc_date_time();
-		if (osMutexAcquire(myMutex01Handle, 1000) == osOK) // Lock
-		{
-			// Lock state
-			get_rtc_time();
-
-			osMutexRelease(myMutex01Handle); // unlock
-			// switching other task
-		}
+//		if (osMutexAcquire(myMutex01Handle, 1000) == osOK) // Lock
+//		{
+//			// Lock state
+//			get_rtc_time();
+//
+//			osMutexRelease(myMutex01Handle); // unlock
+//			// switching other task
+//		}
+	  if (TIM10_1ms_counter1 >= 1000)
+	  {
+		  TIM10_1ms_counter1 = 0;
+		  flash_set_time();
+	  }
+	  alarm_clock();
 #else
 	  //ledbar0_toggle();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
@@ -808,25 +826,25 @@ void StartTask02(void *argument)
   /* Infinite loop */
 	for(;;)
 	{
-		if (osMutexWait(myMutex01Handle, 1000) == osOK) // Lock (Prevent the I2C LCD protocol from getting tangled)
-		{
-			// Lock state
-			get_rtc_date();
-
-			osMutexRelease(myMutex01Handle); // unlock
-			// switching other task
-		}
+//		if (osMutexWait(myMutex01Handle, 1000) == osOK) // Lock (Prevent the I2C LCD protocol from getting tangled)
+//		{
+//			// Lock state
+//			get_rtc_date();
+//
+//			osMutexRelease(myMutex01Handle); // unlock
+//			// switching other task
+//		}
 		//servo_motor_control();
 		//stepmotor_main();
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); //Ctrl + Space
-#if 1 // use timer/counter
+#if 0 // use timer/counter
 		if( TIM10_1ms_counter >= 50)
 		{
 			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 			TIM10_1ms_counter = 0;
 		}
 #endif
-		//pc_command_processing();
+		pc_command_processing();
 		//led_main();
 		osDelay(1);
 	}

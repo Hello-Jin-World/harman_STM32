@@ -1,7 +1,13 @@
 #include "main.h"
+#include "button.h"
+#include "extern.h"
 
 #include <stdio.h>
 #include <string.h>
+
+void flash_main(void);
+void flash_set_time(void);
+void alarm_clock(void);
 
 /**************************************************
      Flash module organization(STM32F411)
@@ -16,9 +22,9 @@ Sector 3    0x800C000-0x800FFFF           16K bytes
 Sector 4    0x8010000-0x801FFFF           64K bytes
 Sector 5    0x8020000-0x803FFFF          128K bytes
 Sector 6    0x8040000-0x805FFFF          128K bytes
-Sector 7    0x8060000-0x807FFFF          128K bytes
+Sector 7    0x8060000-0x807FFFF          128K bytes  <----- We are using sector 7.
 
-******************************************************/
+ ******************************************************/
 
 // 0x8060000-0x807FFFF 의 빈공간에 사용자 데이터를 flash programming
 // 하도록 설정 한다.
@@ -30,43 +36,64 @@ Sector 7    0x8060000-0x807FFFF          128K bytes
 #define FLASH_NOT_INIT_STATUS   0xAAAAAAAA        // flash 초기 상태가 아니다
 #define DATA_32                 ((uint32_t) 0x00000001)
 
-HAL_StatusTypeDef flash_write(uint32_t *data32);
-HAL_StatusTypeDef flash_read();
+extern int get_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int button_num);
+extern volatile int TIM10_DHT11_counter;
+extern volatile int TIM10_1ms_counter;
+extern void rrr(void);
+extern unsigned char bcd2dec(unsigned char byte);
+extern RTC_TimeTypeDef sTime; // Time Information
+
+int hours = 0;
+int minutes = 0;
+int seconds = 0;
+
+HAL_StatusTypeDef flash_write(uint32_t *data32, int size);
+HAL_StatusTypeDef flash_read(uint32_t *data32, int size);
 HAL_StatusTypeDef flash_erase();
 
 uint32_t flash_read_value=0;
 
 typedef struct student
 {
-	uint32_t magic;
-    int num;        // hakbun
-    char name[20];  // name
-    double grade;   // hakjum
+	uint32_t magic;  // check for factory reset state or non-reset state  // 4byte -> 1 word
+	int num;        // hakbun // 4byte -> 1 word
+	char name[20];  // name // 20byte -> 5 word
+	double grade;   // hakjum // 8byte -> 2 word
 } t_student;
 
-t_student student;
+typedef struct set_time
+{
+	uint32_t magic;  // check for factory reset state or non-reset state  // 4byte -> 1 word
+	uint8_t Hours; // 1byte
+	uint8_t Minutes; // 1byte
+	uint8_t Seconds; // 1byte
+	uint8_t dummy; // for memory alignment -> 1 word (dummy data)
+} t_set_time;
 
-void flash_main()
+t_student student; // typedef type
+t_set_time set_time;
+
+void flash_main(void)
 {
 
 	t_student *read_student;
 
-	flash_read_value = *(__IO uint32_t *) USER_DATA_ADDRESS;
+	flash_read_value = *(__IO uint32_t *) USER_DATA_ADDRESS; //  data read from 0x8060000
 
 	if (flash_read_value == FLASH_INIT_STATUS)  // 초기에 아무런 데이터도 존재 하지 않을 경우
 	{
 		flash_erase();
-
-		student.magic=0x55555555;
+		printf("Flash Memory Empty!\n");
+		student.magic=0x55555555;  // --> 0101010101 remained
 		student.num=1101815;
-		strncpy((char *)&student.name,"Hong_Gil_Dong", strlen("Hong_Gil_Dong"));
+		strncpy((char *)&student.name,"Hong_Gil_Dong", strlen("Hong_Gil_Dong"));  // insult "Hong_Gil_Dong" // char type address
 		student.grade=4.0;
 		printf("w grade: %lf\n", student.grade);
-		flash_write((uint32_t *) &student);
+		flash_write((uint32_t *) &student, sizeof(t_student));
 	}
-	else   // 1번 이상 flash memory에 데이터를 write 한 경우
+	else   // 1번 이상 flash memory에 데이터를 write 한 경우 // when not reset state.
 	{
-		flash_read();
+		flash_read((uint32_t *) &student, sizeof(t_student));
 
 		printf("magic: %08x\n", student.magic);
 		printf("num: %08x\n", 	student.num);
@@ -75,54 +102,176 @@ void flash_main()
 	}
 }
 
+void alarm_clock(void)
+{
+	flash_read_value = *(__IO uint32_t *) USER_DATA_ADDRESS; //  data read from 0x8060000
 
-HAL_StatusTypeDef flash_write(uint32_t *data32)
+	static int buzzer_trigger = 0;
+#if 1
+	static RTC_TimeTypeDef oldTime = {0};
+
+	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
+
+	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
+	{
+		printf("%2d:%2d:%2d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+		oldTime.Seconds = sTime.Seconds; // update Second
+	}
+
+	if (sTime.Hours == hours && sTime.Minutes == minutes && sTime.Seconds == seconds)
+	{
+		TIM10_DHT11_counter = 0;
+		buzzer_trigger = 1;
+	}
+
+	if (buzzer_trigger)
+	{
+		if (TIM10_DHT11_counter >= 30000 || get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
+		{
+			TIM10_DHT11_counter = 0;
+			buzzer_trigger = 0;
+			flash_erase();
+		}
+		rrr();
+	}
+#else
+	static int current_hh = 14;
+	static int current_mm = 16;
+	static int current_ss = 50;
+
+	if (TIM10_1ms_counter >= 1000)
+	{
+		TIM10_1ms_counter = 0;
+		current_ss++;
+		if (current_ss == 60)
+		{
+			current_mm++;
+			current_ss = 0;
+			if (current_mm == 60)
+			{
+				current_hh++;
+				current_mm = 0;
+			}
+		}
+		printf("%2d : %2d : %2d\n", current_hh, current_mm, current_ss);
+	}
+
+	if (current_hh == hours && current_mm == minutes && current_ss == seconds)
+	{
+		TIM10_DHT11_counter = 0;
+		buzzer_trigger = 1;
+	}
+
+	if (buzzer_trigger)
+	{
+		if (TIM10_DHT11_counter >= 30000 || get_button(GPIOC, GPIO_PIN_0, BUTTON0) == BUTTON_PRESS)
+		{
+			TIM10_DHT11_counter = 0;
+			buzzer_trigger = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
+			flash_erase();
+		}
+		rrr();
+	}
+#endif
+}
+
+void set_alarm_time(char *time)
+{
+	char hour[2];
+	char minute[2];
+	char second[2];
+
+	strncpy(hour, time, 2);
+	strncpy(minute, time+2, 2);
+	strncpy(second, time+4, 2);
+
+	hours = atoi(hour);
+	minutes = atoi(minute);
+	seconds = atoi(second);
+
+	flash_erase();
+
+}
+
+void flash_set_time(void)
+{
+
+	t_set_time *read_set_time;
+
+	flash_read_value = *(__IO uint32_t *) USER_DATA_ADDRESS; //  data read from 0x8060000
+
+	if (flash_read_value == FLASH_INIT_STATUS)  // 초기에 아무런 데이터도 존재 하지 않을 경우
+	{
+		flash_erase();
+		printf("Flash Memory Empty!\n");
+		set_time.magic = 0x55555555;  // --> 0101010101 remained (user define)
+		set_time.Hours = hours;
+		set_time.Minutes = minutes;
+		set_time.Seconds = seconds;
+		flash_write((uint32_t *) &set_time, sizeof(set_time));
+	}
+	else   // 1번 이상 flash memory에 데이터를 write 한 경우 // when not reset state.
+	{
+		flash_read((uint32_t *) &set_time, sizeof(set_time));
+
+		printf("magic: %08x\n", set_time.magic);
+		printf("Hours: %02d\n", set_time.Hours);
+		printf("Minutes: %02d\n", set_time.Minutes);
+		printf("Seconds: %02d\n", set_time.Seconds);
+	}
+}
+
+
+HAL_StatusTypeDef flash_write(uint32_t *data32, int size)
 {
 	uint32_t *mem32 = data32;
 
-  /* Unlock to control */
-  HAL_FLASH_Unlock();
+	/* Unlock to control */
+	HAL_FLASH_Unlock(); // first, Unlook
 
-  uint32_t Address = FLASH_USER_START_ADDR;
+	uint32_t Address = FLASH_USER_START_ADDR;
 
-  printf("t_student size: %d\n", sizeof(t_student));
+	printf("t_student size: %d\n", size);
 
-  /* Writing data to flash memory */
-  for (int i=0; i < sizeof(t_student); )
-  {
-	  if(HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, Address, *mem32) == HAL_OK)
-	  {
-		  printf("mem32: %0x\n", *mem32);
-		  mem32++;
-		  Address = Address + 4;
-		  i += 4;
-	  }
-	  else
-	  {
-		  uint32_t errorcode = HAL_FLASH_GetError();
-		  return HAL_ERROR;
-	  }
-  }
-  /* Lock flash control register */
-  HAL_FLASH_Lock();
+	/* Writing data to flash memory */
+	for (int i=0; i < size; )
+	{
+		if(HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, Address, *mem32) == HAL_OK)
+		{
+			printf("mem32: %0x\n", *mem32);
+			mem32++; // After value store, go to next address
+			Address = Address + 4; // unsigned int -> +4
+			i += 4;
+		}
+		else
+		{
+			uint32_t errorcode = HAL_FLASH_GetError();
+			return HAL_ERROR;
+		}
+	}
+	/* Lock flash control register */
+	HAL_FLASH_Lock();
 
-  return HAL_OK;
+	return HAL_OK;
 }
 
-HAL_StatusTypeDef flash_read()
+HAL_StatusTypeDef flash_read(uint32_t *addr32, int size)
 {
-  uint32_t *data32 = (uint32_t *) &student;
-  uint32_t address = FLASH_USER_START_ADDR;
-  uint32_t end_address = FLASH_USER_START_ADDR + sizeof(t_student);
+	uint32_t *data32 = addr32;
+	uint32_t address = FLASH_USER_START_ADDR;
+	uint32_t end_address = FLASH_USER_START_ADDR + size;
 
-  while(address < end_address)
-  {
-    *data32 = *(uint32_t*) address;
-    data32++;
-    address = address + 4;
-  }
+	while(address < end_address)
+	{
+		*data32 = *(uint32_t*) address;
+		data32++;
+		address = address + 4;
+	}
 
-  return HAL_OK;
+	return HAL_OK;
 
 }
 

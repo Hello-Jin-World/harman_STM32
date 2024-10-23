@@ -135,15 +135,13 @@ void rrr(void)
 {
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 
-	for (int i = 0; i < 20; i++)
-	{
 		// 2kHz
 		set_buzzer(880);
 		HAL_Delay(100);
 		// stop
 		noTone();
 		HAL_Delay(20);
-	}
+
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
 }
 
