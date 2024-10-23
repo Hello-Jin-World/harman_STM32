@@ -136,7 +136,7 @@ void arrow_display_up(void)
 {
 	static uint32_t past_time=0;  // get pre_tick value
 	uint32_t now = HAL_GetTick();  // Current time
-	static int i = 0;
+	//static int i = 0;
 
 	// Shift arrow upwards every 500ms
 	if (now - past_time >= 200)
@@ -153,31 +153,31 @@ void arrow_display_up(void)
 	}
 
 	// Output display_data
-	//	for (int i = 0; i < 8; i++)
-	//	{
+		for (int i = 0; i < 8; i++)
+		{
 
-	if (TIM10_1ms_counter >= 1)
-	{
-		TIM10_1ms_counter = 0;
+//	if (TIM10_1ms_counter >= 1)
+//	{
+//		TIM10_1ms_counter = 0;
 		col[0] = ~(1 << i);  // 00000001  --> 11111110
 		col[1] = display_data_up[i];
 		//HAL_SPI_Transmit(&hspi2, col, 2, 1);
 		write_ds_75hc595(col[0]);
 		write_ds_75hc595(col[1]);
 		latch_clock();
-		i++;
-		i %= 8;
-	}
+//		i++;
+//		i %= 8;
+//	}
 	//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
 	//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
 
-	//		HAL_Delay(1);
-	//	}
+			HAL_Delay(1);
+		}
 }
 
 void arrow_display_down(void)
 {
-	static int i = 0;
+	//static int i = 0;
 	static uint32_t past_time = 0;  // Store previous tick value
 	uint32_t now = HAL_GetTick();  // Current time
 
@@ -196,24 +196,24 @@ void arrow_display_down(void)
 	}
 
 	// Output display_data
-	//	for (int i = 0; i < 8; i++)
-	//	{
-	if (TIM10_1ms_counter >= 1)
-	{
-		TIM10_1ms_counter = 0;
+		for (int i = 0; i < 8; i++)
+		{
+//	if (TIM10_1ms_counter >= 1)
+//	{
+//		TIM10_1ms_counter = 0;
 		col[0] = ~(1 << i);  // 00000001  --> 11111110
 		col[1] = display_data_down[i];
 		write_ds_75hc595(col[0]);
 		write_ds_75hc595(col[1]);
 		latch_clock();
-		i++;
-		i %= 8;
-	}
+//		i++;
+//		i %= 8;
+//	}
 	//HAL_SPI_Transmit(&hspi2, col, 2, 1);
 	//GPIOB->ODR &= ~GPIO_PIN_15;   // Pull latch pin down
 	//GPIOB->ODR |= GPIO_PIN_15;    // Pull latch pin up
-	//		HAL_Delay(1);
-	//	}
+			HAL_Delay(1);
+		}
 }
 
 void arrow_display_stepmotor(void)

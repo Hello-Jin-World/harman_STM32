@@ -132,6 +132,7 @@ extern void elevator_door_control(void);
 extern void close_the_door(void);
 extern void lcd_floor(void);
 extern void lcd_floor_check(void);
+extern void i2c_test_code(void);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -205,6 +206,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // Servo motor ADD_1017
 printf("HAL_TIM_Base_Start!!!!!\n");
 //playSong();
+//i2c_test_code();
 //buzzer_main();
 close_the_door();
 init_arrow_up();

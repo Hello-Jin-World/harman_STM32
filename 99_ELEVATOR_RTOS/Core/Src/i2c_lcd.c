@@ -11,8 +11,12 @@
 #include <stdio.h>
 #include "i2c_lcd.h"
 
+#define I2C_LCD_ADDRESS (0x27 << 1)
+
 extern TIM_HandleTypeDef htim2;
 extern I2C_HandleTypeDef hi2c1;
+
+void i2c_test_code(void);
 
 void i2c_lcd_main(void);
 void i2c_lcd_init(void);
@@ -30,6 +34,21 @@ void i2c_lcd_main(void){
 		value++;
 		value %= 9;
 		HAL_Delay(500);
+	}
+}
+
+void i2c_test_code(void)
+{
+	unsigned char lcd_test[2] = {'F', '1'};
+
+	while (1)
+	{
+		while(HAL_I2C_Master_Transmit(&hi2c1, I2C_LCD_ADDRESS,
+				lcd_test, 2, 100)!=HAL_OK){
+			//
+			//HAL_Delay(1);
+		}
+		HAL_Delay(1000);
 	}
 }
 
