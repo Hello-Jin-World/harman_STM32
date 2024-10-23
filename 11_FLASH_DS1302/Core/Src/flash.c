@@ -42,6 +42,7 @@ extern volatile int TIM10_1ms_counter;
 extern void rrr(void);
 extern unsigned char bcd2dec(unsigned char byte);
 extern RTC_TimeTypeDef sTime; // Time Information
+extern RTC_DateTypeDef sDate; // Date Information
 
 int hours = 0;
 int minutes = 0;
@@ -111,14 +112,15 @@ void alarm_clock(void)
 	static RTC_TimeTypeDef oldTime = {0};
 
 	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
+	HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
 
 	if (oldTime.Seconds != sTime.Seconds)	// updated time information release. (one release per second)
 	{
-		printf("%2d:%2d:%2d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+		printf("%2d:%2d:%2d\n", bcd2dec(sTime.Hours), bcd2dec(sTime.Minutes), bcd2dec(sTime.Seconds));
 		oldTime.Seconds = sTime.Seconds; // update Second
 	}
 
-	if (sTime.Hours == hours && sTime.Minutes == minutes && sTime.Seconds == seconds)
+	if (bcd2dec(sTime.Hours) == hours && bcd2dec(sTime.Minutes) == minutes && bcd2dec(sTime.Seconds)  == seconds)
 	{
 		TIM10_DHT11_counter = 0;
 		buzzer_trigger = 1;
@@ -217,7 +219,7 @@ void flash_set_time(void)
 	{
 		flash_read((uint32_t *) &set_time, sizeof(set_time));
 
-		printf("magic: %08x\n", set_time.magic);
+		//printf("magic: %08x\n", set_time.magic);
 		printf("Hours: %02d\n", set_time.Hours);
 		printf("Minutes: %02d\n", set_time.Minutes);
 		printf("Seconds: %02d\n", set_time.Seconds);
