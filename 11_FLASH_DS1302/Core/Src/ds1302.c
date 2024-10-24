@@ -105,8 +105,6 @@ void ds1302_init_time_date(void)
 	ds1302_write(ADDR_DATE, ds_time.date);
 	ds1302_write(ADDR_MONTH, ds_time.month);
 	ds1302_write(ADDR_YEAR, ds_time.year);
-
-	//flash_import_time_date();
 }
 
 void ds1302_init_gpio_low(void)

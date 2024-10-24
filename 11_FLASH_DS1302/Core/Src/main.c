@@ -133,9 +133,10 @@ extern void alarm_clock(void);
 extern void ds1302_main(void);
 extern void ds1302_flash_clock(void);
 extern void flash_import_time_date(void);
-extern void de1302_init_time_date(void);
+extern void ds1302_init_time_date(void);
 extern void ds1302_set_time(void);
 extern void ds1302_init_gpio_low(void);
+extern void flash_export_time_date(void);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -212,7 +213,8 @@ ds1302_init_gpio_low();
 #if 0
 ds1302_set_time();
 // setting clock
-de1302_init_time_date();
+ds1302_init_time_date();
+flash_export_time_date();
 #else
 flash_import_time_date();
 #endif
