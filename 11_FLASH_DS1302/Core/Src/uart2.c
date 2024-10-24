@@ -10,6 +10,7 @@ extern void set_rtc(char *date_time);
 extern int dotmatrix_command;
 extern int dotmatrix_clear;
 
+extern void set_pc_time_date(char *time);
 
 void pc_command_processing();
 
@@ -141,6 +142,10 @@ void pc_command_processing(void)
 		else if(strncmp(rx_buffer[front], "set_alarm_time", strlen("set_alarm_time")) == 0)
 		{
 			set_alarm_time(&rx_buffer[front][strlen("set_alarm_time")]);
+		}
+		else if(strncmp(rx_buffer[front], "set_time20", strlen("set_time20")) == 0)
+		{
+			set_pc_time_date(&rx_buffer[front][strlen("set_time20")]);
 		}
 		front++;
 		front %= COMMAND_NUMBER;

@@ -130,6 +130,12 @@ extern void get_rtc_time(void);
 extern void flash_main(void);
 extern void flash_set_time(void);
 extern void alarm_clock(void);
+extern void ds1302_main(void);
+extern void ds1302_flash_clock(void);
+extern void flash_import_time_date(void);
+extern void de1302_init_time_date(void);
+extern void ds1302_set_time(void);
+extern void ds1302_init_gpio_low(void);
 //extern void playSong();
 /* USER CODE END PFP */
 
@@ -202,6 +208,15 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, &rx_data, 1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // Servo motor ADD_1017
 printf("HAL_TIM_Base_Start!!!!!\n");
+ds1302_init_gpio_low();
+#if 0
+ds1302_set_time();
+// setting clock
+de1302_init_time_date();
+#else
+flash_import_time_date();
+#endif
+//ds1302_main();
 //playSong();
 //buzzer_main();
 //init_arrow_up();
@@ -684,7 +699,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DHT11_Pin|LD2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DHT11_Pin|LD2_Pin|CE_DS1302_Pin|IO_DS1302_Pin
+                          |CLK_DS1302_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED0_Pin|LED1_Pin|LED2_Pin|CLK_74HC595_Pin
@@ -706,8 +722,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : DHT11_Pin LD2_Pin */
-  GPIO_InitStruct.Pin = DHT11_Pin|LD2_Pin;
+  /*Configure GPIO pins : DHT11_Pin LD2_Pin CE_DS1302_Pin IO_DS1302_Pin
+                           CLK_DS1302_Pin */
+  GPIO_InitStruct.Pin = DHT11_Pin|LD2_Pin|CE_DS1302_Pin|IO_DS1302_Pin
+                          |CLK_DS1302_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -797,12 +815,13 @@ void StartTask01(void *argument)
 //			osMutexRelease(myMutex01Handle); // unlock
 //			// switching other task
 //		}
-	  if (TIM10_1ms_counter1 >= 1000)
-	  {
-		  TIM10_1ms_counter1 = 0;
-		  flash_set_time();
-	  }
-	  alarm_clock();
+//	  if (TIM10_1ms_counter1 >= 1000)
+//	  {
+//		  TIM10_1ms_counter1 = 0;
+//		  flash_set_time();
+//	  }
+//	  alarm_clock();
+	  ds1302_flash_clock();
 #else
 	  //ledbar0_toggle();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);

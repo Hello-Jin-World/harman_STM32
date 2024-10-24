@@ -1,22 +1,22 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.h
+ * @brief          : Header for main.c file.
+ *                   This file contains the common defines of the application.
+ ******************************************************************************
+ * @attention
+ *
+ * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.</center></h2>
+ *
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -98,6 +98,12 @@ void Error_Handler(void);
 #define IN3_GPIO_Port GPIOC
 #define IN4_Pin GPIO_PIN_9
 #define IN4_GPIO_Port GPIOC
+#define CE_DS1302_Pin GPIO_PIN_10
+#define CE_DS1302_GPIO_Port GPIOA
+#define IO_DS1302_Pin GPIO_PIN_11
+#define IO_DS1302_GPIO_Port GPIOA
+#define CLK_DS1302_Pin GPIO_PIN_12
+#define CLK_DS1302_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
@@ -113,7 +119,32 @@ void Error_Handler(void);
 #define LED7_Pin GPIO_PIN_7
 #define LED7_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+typedef struct ds1302
+{
+	uint8_t seconds;
+	uint8_t minutes;
+	uint8_t hour;
+	uint8_t date;
+	uint8_t month;
+	uint8_t dayofweek; // 1: sun, 2: mon ...
+	uint8_t year;
+	uint8_t ampm; // 0 : am, 1: pm
+	uint8_t hourmode; // 0: 24 format, 1: 12 format
+	uint8_t writeprotected; // 0: 24 format, 1: 12 format
+} t_ds1302;
 
+typedef struct set_time
+{
+	uint32_t magic;  // check for factory reset state or non-reset state  // 4byte -> 1 word
+	uint8_t Hours; // 1byte
+	uint8_t Minutes; // 1byte
+	uint8_t Seconds; // 1byte
+	uint8_t dummy1; // for memory alignment -> 1 word (dummy data)
+	uint8_t Year; // 1byte
+	uint8_t Month; // 1byte
+	uint8_t Date; // 1byte
+//	uint8_t dummy2; // for memory alignment -> 1 word (dummy data)
+} t_set_time;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
