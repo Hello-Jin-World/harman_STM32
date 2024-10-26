@@ -58,7 +58,6 @@ uint8_t getKeypadState(uint8_t col, uint8_t row)
 	else if (curState == RELEASED && prevState[col][row] == PUSHED)
 	{
 		prevState[col][row] = curState;
-		printf("%c\n", keypadChar[col][row]);
 		return keypadChar[col][row];
 	}
 	return 0;

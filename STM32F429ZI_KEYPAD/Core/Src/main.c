@@ -88,6 +88,7 @@ void StartTask02(void *argument);
 
 /* USER CODE BEGIN PFP */
 extern Queue keypad_queue;
+extern void get_mathequation(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -162,7 +163,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ETH_Init();
+//  MX_ETH_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   MX_TIM11_Init();
@@ -505,14 +506,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if (QIsEmpty(&keypad_queue) != TRUE)
-	  {
-		  uint8_t data;
-
-		  data = Dequeue(&keypad_queue);
-
-		  printf("Dequeue : %c\n", data);
-	  }
+	get_mathequation();
     osDelay(1);
   }
   /* USER CODE END 5 */
