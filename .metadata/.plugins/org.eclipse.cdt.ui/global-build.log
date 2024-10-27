@@ -1,0 +1,1828 @@
+00:23:04 **** Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/croutine.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/croutine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/croutine.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/event_groups.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/event_groups.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/event_groups.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/list.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/list.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/list.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/list.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/queue.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/queue.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/queue.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/queue.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/tasks.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/tasks.o"
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/timers.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/timers.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/timers.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/timers.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f429zitx.d" -MT"Core/Startup/startup_stm32f429zitx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f429zitx.o" "../Core/Startup/startup_stm32f429zitx.s"
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc "../Core/Src/circularQueue.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/circularQueue.d" -MT"Core/Src/circularQueue.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/circularQueue.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/keypad.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/keypad.d" -MT"Core/Src/keypad.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/keypad.o"
+../Core/Src/button.c:2:10: fatal error: led.h: No such file or directory
+    2 | #include "led.h"
+      |          ^~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:49: Core/Src/button.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+00:23:29 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/main.c:276:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+  276 | static void MX_ETH_Init(void)
+      |             ^~~~~~~~~~~
+../Core/Src/button.c:8:2: error: 'led_all_off' undeclared here (not in a function)
+    8 |  led_all_off,
+      |  ^~~~~~~~~~~
+../Core/Src/button.c:9:2: error: 'led_all_on' undeclared here (not in a function)
+    9 |  led_all_on,
+      |  ^~~~~~~~~~
+../Core/Src/button.c:10:2: error: 'led_up_on' undeclared here (not in a function)
+   10 |  led_up_on,
+      |  ^~~~~~~~~
+../Core/Src/button.c:11:2: error: 'led_down_on' undeclared here (not in a function)
+   11 |  led_down_on,
+      |  ^~~~~~~~~~~
+../Core/Src/button.c:12:2: error: 'flower_on' undeclared here (not in a function)
+   12 |  flower_on,
+      |  ^~~~~~~~~
+../Core/Src/button.c:13:2: error: 'flower_off' undeclared here (not in a function)
+   13 |  flower_off,
+      |  ^~~~~~~~~~
+../Core/Src/button.c:14:2: error: 'led_keep_on_up' undeclared here (not in a function)
+   14 |  led_keep_on_up,
+      |  ^~~~~~~~~~~~~~
+../Core/Src/button.c:15:2: error: 'led_keep_on_down' undeclared here (not in a function)
+   15 |  led_keep_on_down
+      |  ^~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/button.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+00:23:40 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/button.o"
+../Core/Src/button.c: In function 'button_check':
+../Core/Src/button.c:17:2: error: 'fp' undeclared (first use in this function)
+   17 |  fp[mode]();
+      |  ^~
+../Core/Src/button.c:17:2: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:49: Core/Src/button.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+00:24:14 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31872	    180	  21948	  54000	   d2f0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:27:12 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31888	    180	  21948	  54016	   d300	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:28:37 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31888	    180	  21948	  54016	   d300	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+00:29:39 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:31:05 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:33:14 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:34:30 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31920	    180	  21948	  54048	   d320	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:34:59 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31936	    180	  21948	  54064	   d330	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:35:45 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:38:55 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:191:24: error: expected expression before 'uint8_t'
+  191 |   input[input_index] = uint8_t('(');
+      |                        ^~~~~~~
+../Core/Src/calculater.c:200:24: error: expected expression before 'uint8_t'
+  200 |   input[input_index] = uint8_t(')');
+      |                        ^~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+00:40:48 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:43:10 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:44:13 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+00:48:01 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+01:24:02 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:192:22: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+  192 |   printf("Dequeue : %d\n", input);
+      |                     ~^     ~~~~~
+      |                      |     |
+      |                      int   char *
+      |                     %s
+../Core/Src/calculater.c:201:22: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+  201 |   printf("Dequeue : %d\n", input);
+      |                     ~^     ~~~~~
+      |                      |     |
+      |                      int   char *
+      |                     %s
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31920	    180	  21948	  54048	   d320	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+01:25:13 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31904	    180	  21948	  54032	   d310	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+01:29:50 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31968	    180	  21948	  54096	   d350	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+01:31:30 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/keypad.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/keypad.d" -MT"Core/Src/keypad.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/keypad.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31968	    180	  21948	  54096	   d350	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+17:57:55 **** Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc "../Core/Src/keypad.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/keypad.d" -MT"Core/Src/keypad.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/keypad.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31984	    180	  21948	  54112	   d360	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:05:18 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31968	    180	  21948	  54096	   d350	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:08:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31952	    180	  21948	  54080	   d340	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:11:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31952	    180	  21948	  54080	   d340	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:12:30 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'pop':
+../Core/Src/calculater.c:68:10: warning: passing argument 1 of 'printf' from incompatible pointer type [-Wincompatible-pointer-types]
+   68 |   printf(stderr, "Stack underflow error\n");
+      |          ^~~~~~
+      |          |
+      |          __FILE * {aka struct __sFILE *}
+In file included from ../Core/Src/calculater.c:5:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/stdio.h:200:13: note: expected 'const char * restrict' but argument is of type '__FILE *' {aka 'struct __sFILE *'}
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31952	    180	  21948	  54080	   d340	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:13:35 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31620	    180	  21948	  53748	   d1f4	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:14:24 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31636	    180	  21844	  53660	   d19c	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:17:18 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31636	    180	  21948	  53764	   d204	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:17:36 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31636	    180	  21948	  53764	   d204	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+18:41:43 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:151:11: error: assignment to expression with array type
+  151 |  math_equ = *postfix;
+      |           ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:222:19: warning: passing argument 1 of 'calculator_stm' from incompatible pointer type [-Wincompatible-pointer-types]
+  222 |    calculator_stm(&postfix);
+      |                   ^~~~~~~~
+      |                   |
+      |                   char (*)[100]
+../Core/Src/calculater.c:147:27: note: expected 'char *' but argument is of type 'char (*)[100]'
+  147 | void calculator_stm(char *postfix)
+      |                     ~~~~~~^~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:42:06 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:152:11: error: assignment to expression with array type
+  152 |  math_equ = *postfix;
+      |           ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:223:19: warning: passing argument 1 of 'calculator_stm' from incompatible pointer type [-Wincompatible-pointer-types]
+  223 |    calculator_stm(&postfix);
+      |                   ^~~~~~~~
+      |                   |
+      |                   char (*)[100]
+../Core/Src/calculater.c:148:27: note: expected 'char *' but argument is of type 'char (*)[100]'
+  148 | void calculator_stm(char *postfix)
+      |                     ~~~~~~^~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:42:20 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c:148:6: error: conflicting types for 'calculator_stm'
+  148 | void calculator_stm(char *postfix[])
+      |      ^~~~~~~~~~~~~~
+../Core/Src/calculater.c:12:6: note: previous declaration of 'calculator_stm' was here
+   12 | void calculator_stm(char *postfix);
+      |      ^~~~~~~~~~~~~~
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:152:11: error: assignment to expression with array type
+  152 |  math_equ = *postfix;
+      |           ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:223:19: warning: passing argument 1 of 'calculator_stm' from incompatible pointer type [-Wincompatible-pointer-types]
+  223 |    calculator_stm(&postfix);
+      |                   ^~~~~~~~
+      |                   |
+      |                   char (*)[100]
+../Core/Src/calculater.c:148:27: note: expected 'char **' but argument is of type 'char (*)[100]'
+  148 | void calculator_stm(char *postfix[])
+      |                     ~~~~~~^~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:42:29 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c:148:6: error: conflicting types for 'calculator_stm'
+  148 | void calculator_stm(char *postfix[100])
+      |      ^~~~~~~~~~~~~~
+../Core/Src/calculater.c:12:6: note: previous declaration of 'calculator_stm' was here
+   12 | void calculator_stm(char *postfix);
+      |      ^~~~~~~~~~~~~~
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:152:11: error: assignment to expression with array type
+  152 |  math_equ = *postfix;
+      |           ^
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:223:19: warning: passing argument 1 of 'calculator_stm' from incompatible pointer type [-Wincompatible-pointer-types]
+  223 |    calculator_stm(&postfix);
+      |                   ^~~~~~~~
+      |                   |
+      |                   char (*)[100]
+../Core/Src/calculater.c:148:27: note: expected 'char **' but argument is of type 'char (*)[100]'
+  148 | void calculator_stm(char *postfix[100])
+      |                     ~~~~~~^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:43:56 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:152:11: error: assignment to expression with array type
+  152 |  math_equ = postfix;
+      |           ^
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:44:08 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:152:11: error: assignment to expression with array type
+  152 |  math_equ = *postfix;
+      |           ^
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:44:40 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31944	    180	  21956	  54080	   d340	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:47:02 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31960	    180	  21956	  54096	   d350	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:49:11 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31912	    180	  21948	  54040	   d318	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:50:09 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31912	    180	  21948	  54040	   d318	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+18:51:59 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31944	    180	  21956	  54080	   d340	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:52:46 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31912	    180	  21948	  54040	   d318	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:54:12 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31912	    180	  21948	  54040	   d318	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:55:10 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31948	    180	  21948	  54076	   d33c	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:55:58 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31948	    180	  21948	  54076	   d33c	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:56:46 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31980	    180	  21956	  54116	   d364	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+18:57:49 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  31980	    180	  21956	  54116	   d364	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:00:02 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32048	    180	  21956	  54184	   d3a8	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:01:51 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32312	    180	  21956	  54448	   d4b0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:03:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32312	    180	  21956	  54448	   d4b0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:05:10 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:05:49 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:06:08 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:06:20 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+19:06:22 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+19:06:28 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+19:07:42 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+../Core/Src/calculater.c:204:20: warning: format '%d' expects argument of type 'int', but argument 2 has type 'int *' [-Wformat=]
+  204 |  printf("result : %d\n", &num1);
+      |                   ~^     ~~~~~
+      |                    |     |
+      |                    int   int *
+      |                   %ls
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32280	    180	  21956	  54416	   d490	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:08:19 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:09:25 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'calculator_stm':
+../Core/Src/calculater.c:175:10: warning: statement with no effect [-Wunused-value]
+  175 |    state == 1;
+      |    ~~~~~~^~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:10:24 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:10:52 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32296	    180	  21956	  54432	   d4a0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:15:25 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32344	    180	  21956	  54480	   d4d0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:17:24 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32360	    180	  21956	  54496	   d4e0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:18:22 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32344	    180	  21956	  54480	   d4d0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:19:59 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32360	    180	  21956	  54496	   d4e0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:21:46 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32376	    180	  21956	  54512	   d4f0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:23:41 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32376	    180	  21956	  54512	   d4f0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:25:53 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32408	    180	  21956	  54544	   d510	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:28:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32424	    180	  21956	  54560	   d520	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:29:10 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32472	    180	  21956	  54608	   d550	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:30:20 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32504	    180	  21956	  54640	   d570	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:34:09 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32456	    180	  21956	  54592	   d540	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:34:18 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32488	    180	  21956	  54624	   d560	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:52:37 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32184	    180	  21948	  54312	   d428	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:53:04 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32280	    180	  21948	  54408	   d488	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:54:07 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32328	    180	  21948	  54456	   d4b8	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:56:32 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32328	    180	  21948	  54456	   d4b8	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:58:01 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'get_mathequation':
+../Core/Src/calculater.c:307:44: error: expected ';' before '}' token
+  307 |    printf("Postfix result : %s\n", postfix)
+      |                                            ^
+      |                                            ;
+  308 |   }
+      |   ~                                         
+make: *** [Core/Src/subdir.mk:49: Core/Src/calculater.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+19:58:06 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32368	    180	  21948	  54496	   d4e0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+19:59:50 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32384	    180	  21948	  54512	   d4f0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:05:51 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32384	    180	  21948	  54512	   d4f0	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:15:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32644	    180	  21948	  54772	   d5f4	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:21:03 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32644	    180	  21948	  54772	   d5f4	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+20:26:48 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'in_to_post':
+../Core/Src/calculater.c:104:39: warning: passing argument 2 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    const char *result = strstr(infix, ')');
+      |                                       ^~~
+      |                                       |
+      |                                       int
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'int'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32736	    180	  21948	  54864	   d650	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:27:27 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'in_to_post':
+../Core/Src/calculater.c:104:32: warning: passing argument 2 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    char result = strstr(infix, ')');
+      |                                ^~~
+      |                                |
+      |                                int
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'int'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+../Core/Src/calculater.c:104:18: warning: initialization of 'char' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+  104 |    char result = strstr(infix, ')');
+      |                  ^~~~~~
+../Core/Src/calculater.c:106:15: warning: comparison between pointer and integer
+  106 |    if (result == NULL)
+      |               ^~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32736	    180	  21948	  54864	   d650	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:28:18 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'in_to_post':
+../Core/Src/calculater.c:104:25: warning: passing argument 1 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    char result = strstr(*infix, ')');
+      |                         ^~~~~~
+      |                         |
+      |                         char
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'char'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+../Core/Src/calculater.c:104:33: warning: passing argument 2 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    char result = strstr(*infix, ')');
+      |                                 ^~~
+      |                                 |
+      |                                 int
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'int'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+../Core/Src/calculater.c:104:18: warning: initialization of 'char' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+  104 |    char result = strstr(*infix, ')');
+      |                  ^~~~~~
+../Core/Src/calculater.c:106:15: warning: comparison between pointer and integer
+  106 |    if (result == NULL)
+      |               ^~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32736	    180	  21948	  54864	   d650	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:31:08 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32660	    180	  21948	  54788	   d604	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:31:12 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32660	    180	  21948	  54788	   d604	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+20:32:04 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32680	    180	  21948	  54808	   d618	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:33:52 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'in_to_post':
+../Core/Src/calculater.c:104:23: warning: passing argument 2 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    if (!strstr(infix, ')'))
+      |                       ^~~
+      |                       |
+      |                       int
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'int'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32720	    180	  21948	  54848	   d640	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 
+20:37:24 **** Incremental Build of configuration Debug for project STM32F429ZI_KEYPAD ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater.d" -MT"Core/Src/calculater.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater.o"
+../Core/Src/calculater.c: In function 'in_to_post':
+../Core/Src/calculater.c:104:22: warning: passing argument 2 of 'strstr' makes pointer from integer without a cast [-Wint-conversion]
+  104 |    if (strstr(infix, ')') != 1)
+      |                      ^~~
+      |                      |
+      |                      int
+In file included from ../Core/Src/calculater.c:6:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/arm-none-eabi/include/string.h:48:8: note: expected 'const char *' but argument is of type 'int'
+   48 | char  *strstr (const char *, const char *);
+      |        ^~~~~~
+../Core/Src/calculater.c:104:27: warning: comparison between pointer and integer
+  104 |    if (strstr(infix, ')') != 1)
+      |                           ^~
+arm-none-eabi-gcc -o "STM32F429ZI_KEYPAD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_KEYPAD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_KEYPAD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_KEYPAD.elf
+ 
+arm-none-eabi-size   STM32F429ZI_KEYPAD.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_KEYPAD.elf  > "STM32F429ZI_KEYPAD.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_KEYPAD.elf  "STM32F429ZI_KEYPAD.bin"
+   text	   data	    bss	    dec	    hex	filename
+  32720	    180	  21948	  54848	   d640	STM32F429ZI_KEYPAD.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_KEYPAD.bin
+ 
+Finished building: STM32F429ZI_KEYPAD.list
+ 

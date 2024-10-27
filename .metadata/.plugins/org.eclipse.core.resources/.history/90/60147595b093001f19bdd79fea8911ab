@@ -1,0 +1,207 @@
+#include "keypad.h"
+#include "circularQueue.h"
+#include "button.h"
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+extern Queue keypad_queue;
+
+void get_mathequation(void);
+void in_to_post(char* infix, char* postfix);
+
+#define STACK_SIZE 100
+
+typedef double element;
+
+typedef struct
+{
+	element stack[STACK_SIZE];
+	int top;
+} StackType;
+
+void init(StackType* s)
+{
+	s->top = -1;
+}
+
+int is_empty(StackType* s)
+{
+	return (s->top == -1);
+}
+
+int is_full(StackType* s)
+{
+	return (s->top == (STACK_SIZE - 1));
+}
+
+void push(StackType* s, element item)
+{
+	if (is_full(s))
+	{
+		fprintf(stderr, "Stack overflow error\n");
+		return;
+	}
+	else {
+		s->stack[++(s->top)] = item;
+	}
+}
+
+element peek(StackType* s)
+{
+	if (is_empty(s))
+	{
+		fprintf(stderr, "Stack underflow error\n");
+		exit(1);
+	}
+	else
+	{
+		return s->stack[s->top];
+	}
+}
+
+element pop(StackType* s)
+{
+	if (is_empty(s))
+	{
+		printf(stderr, "Stack underflow error\n");
+		exit(1);
+	}
+	else
+	{
+		return s->stack[(s->top)--];
+	}
+}
+
+int prec(char op)
+{
+	switch (op)
+	{
+	case '(': case ')': return 0;
+	case '+': case '-': return 1;
+	case '*': case '/': return 2;
+	}
+	return -1;
+}
+
+void in_to_post(char* infix, char* postfix)
+{
+	StackType s;
+	init(&s); // Declare and initialize stack
+
+	while (*infix != '\0')
+	{ // Repeat until NULL value in input string
+		if (*infix == ' ')
+		{
+			infix++; // Ignore ' ' space
+		}
+		else if (*infix == '(')
+		{
+			push(&s, *infix);
+			infix++;
+		}
+		else if (*infix == ')')
+		{
+			while (peek(&s) != '(')
+			{
+				*postfix++ = pop(&s);
+				*postfix++ = ' ';
+			}
+			pop(&s); // Remove '('
+			infix++;
+		}
+		else if (*infix == '+' || *infix == '-' || *infix == '*' || *infix == '/')
+		{
+			while (!is_empty(&s) && (prec(*infix) <= prec(peek(&s))))
+			{
+				*postfix++ = pop(&s);
+				*postfix++ = ' ';
+			}
+			push(&s, *infix);
+			infix++;
+		}
+		else if (*infix >= '0' && *infix <= '9')
+		{
+			do
+			{
+				*postfix++ = *infix++;
+			} while (*infix >= '0' && *infix <= '9');
+			*postfix++ = ' ';
+		}
+		else
+		{
+			infix++;
+		}
+	}
+	while (!is_empty(&s))
+	{
+		*postfix++ = pop(&s);
+		*postfix++ = ' ';
+	}
+	postfix--;
+	*postfix = '\0';
+}
+
+int calculator_stm(void)
+{
+	char input[100];
+	char postfix[100];
+
+	printf("Enter expression: ");
+	fgets(input, sizeof(input), stdin);
+
+	input[strcspn(input, "\n")] = '\0';
+
+	in_to_post(input, postfix);
+	printf("Postfix expression: %s\n", postfix);
+
+	return 0;
+}
+
+void get_mathequation(void)
+{
+	static char input[100];
+	static char postfix[100];
+	static int input_index = 0;
+
+	if (QIsEmpty(&keypad_queue) != TRUE)
+	{
+		uint8_t data;
+		data = Dequeue(&keypad_queue);
+
+		input[input_index] = data;
+		printf("Dequeue : %s\n", input);
+		//		input[strcspn(input, "\n")] = '\0';
+		input_index++;
+		if (data == '=')
+		{
+			input[strcspn(input, "\n")] = '\0';
+
+			in_to_post(input, postfix);
+			printf("Postfix expression: %s\n", postfix);
+			input_index = 0;
+		}
+
+		//printf("Dequeue : %c\n", data);
+	}
+
+	if (get_button(BUTTON0_GPIO_Port, BUTTON0_Pin, BUTTON0) == BUTTON_PRESS)
+	{
+		input[input_index] = '(';
+		printf("Dequeue : %s\n", input);
+		//printf("Dequeue : %c\n", '(');
+		//		input[strcspn(input, "\n")] = '\0';
+		input_index++;
+	}
+
+	if (get_button(BUTTON1_GPIO_Port, BUTTON1_Pin, BUTTON1) == BUTTON_PRESS)
+	{
+		input[input_index] = ')';
+		printf("Dequeue : %s\n", input);
+		//printf("Dequeue : %c\n", ')');
+		//		input[strcspn(input, "\n")] = '\0';
+		input_index++;
+	}
+
+}
