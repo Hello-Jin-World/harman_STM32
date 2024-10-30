@@ -647,12 +647,9 @@ void StartDefaultTask(void *argument)
 	/* Infinite loop */
 	for(;;)
 	{
-//		calculator_main();
-//		get_mathequation();
-//		lcd_cal();
-		ds1302_flash_clock();
 		toggle_clock_cal();
 		lcd_clock_cal();
+		ds1302_flash_clock();
 
 		osDelay(1);
 	}

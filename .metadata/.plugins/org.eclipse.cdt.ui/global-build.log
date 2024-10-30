@@ -14590,3 +14590,291 @@ Finished building: STM32F429ZI_LCD_DRIVER.bin
  
 Finished building: STM32F429ZI_LCD_DRIVER.list
  
+13:09:21 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/calculater_JJ.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/calculater_JJ.d" -MT"Core/Src/calculater_JJ.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/calculater_JJ.o"
+arm-none-eabi-gcc "../Core/Src/lcd_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lcd_driver.d" -MT"Core/Src/lcd_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd_driver.o"
+../Core/Src/calculater_JJ.c: In function 'push':
+../Core/Src/calculater_JJ.c:54:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   54 |         printf("Stack overflow error\n");
+      |         ^~~~~~
+../Core/Src/calculater_JJ.c:54:9: warning: incompatible implicit declaration of built-in function 'printf'
+../Core/Src/calculater_JJ.c:6:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    5 | #include <stdlib.h> // atoi itoa 함수등
+  +++ |+#include <stdio.h>
+    6 | 
+../Core/Src/calculater_JJ.c: In function 'infixToPostfix':
+../Core/Src/calculater_JJ.c:83:13: warning: implicit declaration of function 'isdigit' [-Wimplicit-function-declaration]
+   83 |         if (isdigit(infix[i])) // 숫자 구분
+      |             ^~~~~~~
+../Core/Src/calculater_JJ.c:122:5: warning: incompatible implicit declaration of built-in function 'printf'
+  122 |     printf("Postfix Expression: %s\n", postfix);
+      |     ^~~~~~
+../Core/Src/calculater_JJ.c:122:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/calculater_JJ.c: In function 'evaluatePostfix':
+../Core/Src/calculater_JJ.c:176:22: warning: incompatible implicit declaration of built-in function 'printf'
+  176 |                      printf("zero error\n");
+      |                      ^~~~~~
+../Core/Src/calculater_JJ.c:176:22: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/lcd_driver.c: In function 'lcd_cal':
+../Core/Src/lcd_driver.c:56:14: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   56 |   lcd_string(input_buff);
+      |              ^~~~~~~~~~
+      |              |
+      |              char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c: In function 'rtc_lcd_main':
+../Core/Src/lcd_driver.c:71:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   71 |  lcd_string(lcd_buffer_date);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c:73:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   73 |  lcd_string(lcd_buffer_time);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/calculater_JJ.c: In function 'calculator_main':
+../Core/Src/calculater_JJ.c:201:13: warning: implicit declaration of function 'move_cursor' [-Wimplicit-function-declaration]
+  201 |             move_cursor(0, 0);
+      |             ^~~~~~~~~~~
+../Core/Src/calculater_JJ.c:202:13: warning: implicit declaration of function 'lcd_string' [-Wimplicit-function-declaration]
+  202 |             lcd_string("                    "); // LCD 화면 초기화
+      |             ^~~~~~~~~~
+../Core/Src/calculater_JJ.c:207:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  207 |         sprintf(cal_buff, "%c", data);
+      |         ^~~~~~~
+../Core/Src/calculater_JJ.c:207:9: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/calculater_JJ.c:207:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/calculater_JJ.c:220:13: warning: incompatible implicit declaration of built-in function 'printf'
+  220 |             printf("result: %.2f\n", result);
+      |             ^~~~~~
+../Core/Src/calculater_JJ.c:220:13: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/calculater_JJ.c:253:9: warning: incompatible implicit declaration of built-in function 'sprintf'
+  253 |         sprintf(cal_buff, "%c", '(');
+      |         ^~~~~~~
+../Core/Src/calculater_JJ.c:253:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/calculater_JJ.c:272:9: warning: incompatible implicit declaration of built-in function 'sprintf'
+  272 |         sprintf(cal_buff, "%c", ')');
+      |         ^~~~~~~
+../Core/Src/calculater_JJ.c:272:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/calculater_JJ.c: In function 'toggle_clock_cal':
+../Core/Src/calculater_JJ.c:284:3: warning: implicit declaration of function 'lcd_command' [-Wimplicit-function-declaration]
+  284 |   lcd_command(0x01);      // 디스플레이 클리어
+      |   ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_LCD_DRIVER.elf
+ 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
+   text	   data	    bss	    dec	    hex	filename
+  48260	    544	  22984	  71788	  1186c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.bin
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.list
+ 
+13:15:36 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/lcd_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lcd_driver.d" -MT"Core/Src/lcd_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd_driver.o"
+../Core/Src/lcd_driver.c: In function 'lcd_cal':
+../Core/Src/lcd_driver.c:59:14: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   59 |   lcd_string(input_buff);
+      |              ^~~~~~~~~~
+      |              |
+      |              char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c: In function 'rtc_lcd_main':
+../Core/Src/lcd_driver.c:74:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   74 |  lcd_string(lcd_buffer_date);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c:76:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   76 |  lcd_string(lcd_buffer_time);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_LCD_DRIVER.elf
+ 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
+   text	   data	    bss	    dec	    hex	filename
+  48244	    544	  22984	  71772	  1185c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.bin
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.list
+ 
+13:16:08 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/lcd_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lcd_driver.d" -MT"Core/Src/lcd_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd_driver.o"
+../Core/Src/lcd_driver.c: In function 'lcd_cal':
+../Core/Src/lcd_driver.c:59:14: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   59 |   lcd_string(input_buff);
+      |              ^~~~~~~~~~
+      |              |
+      |              char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c: In function 'rtc_lcd_main':
+../Core/Src/lcd_driver.c:74:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   74 |  lcd_string(lcd_buffer_date);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c:76:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   76 |  lcd_string(lcd_buffer_time);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_LCD_DRIVER.elf
+ 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
+   text	   data	    bss	    dec	    hex	filename
+  48244	    544	  22984	  71772	  1185c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.bin
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.list
+ 
+13:16:57 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/lcd_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lcd_driver.d" -MT"Core/Src/lcd_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd_driver.o"
+../Core/Src/lcd_driver.c: In function 'lcd_cal':
+../Core/Src/lcd_driver.c:59:14: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   59 |   lcd_string(input_buff);
+      |              ^~~~~~~~~~
+      |              |
+      |              char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c: In function 'rtc_lcd_main':
+../Core/Src/lcd_driver.c:74:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   74 |  lcd_string(lcd_buffer_date);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c:76:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   76 |  lcd_string(lcd_buffer_time);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_LCD_DRIVER.elf
+ 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
+   text	   data	    bss	    dec	    hex	filename
+  48260	    544	  22984	  71788	  1186c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.bin
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.list
+ 
+13:17:25 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/lcd_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lcd_driver.d" -MT"Core/Src/lcd_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd_driver.o"
+../Core/Src/lcd_driver.c: In function 'lcd_cal':
+../Core/Src/lcd_driver.c:59:14: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   59 |   lcd_string(input_buff);
+      |              ^~~~~~~~~~
+      |              |
+      |              char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c: In function 'rtc_lcd_main':
+../Core/Src/lcd_driver.c:74:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   74 |  lcd_string(lcd_buffer_date);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+../Core/Src/lcd_driver.c:76:13: warning: pointer targets in passing argument 1 of 'lcd_string' differ in signedness [-Wpointer-sign]
+   76 |  lcd_string(lcd_buffer_time);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             char *
+In file included from ../Core/Src/lcd_driver.c:5:
+../Core/Inc/i2c_lcd.h:23:26: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   23 | void lcd_string(uint8_t *str);
+      |                 ~~~~~~~~~^~~
+arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F429ZI_LCD_DRIVER.elf
+ 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
+arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
+   text	   data	    bss	    dec	    hex	filename
+  48260	    544	  22984	  71788	  1186c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.bin
+ 
+Finished building: STM32F429ZI_LCD_DRIVER.list
+ 
+13:19:02 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+make -j9 all 
+arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48260	    544	  22984	  71788	  1186c	STM32F429ZI_LCD_DRIVER.elf
+Finished building: default.size.stdout
+ 

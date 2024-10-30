@@ -73,17 +73,12 @@ void rtc_lcd_main(void)
 void lcd_enable(void)
 {
 #if 1
-	// Enable
+	// Disable
 	*(unsigned int *) 0x40020414 &= ~(E_LCD_Pin);
 	HAL_Delay(1);
-	//*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x1000;
+    // Enable
 	*(unsigned int *) 0x40020414 |= E_LCD_Pin;
 	HAL_Delay(1);
-
-	// Disable
-	//*(unsigned int *) ((uint32_t)E_LCD_GPIO_Port + 0x14) |= ((uint32_t)E_LCD_GPIO_Port + 0x14) & ~E_LCD_Pin;
-
-
 #else
 	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 0);
 	HAL_Delay(1);
@@ -95,18 +90,12 @@ void lcd_enable(void)
 void lcd_disable(void)
 {
 #if 1
+    // Enable
 	*(unsigned int *) 0x40020414 |= E_LCD_Pin;
 	HAL_Delay(1);
 	// Disable
-	//*(unsigned int *) 0x40020414 |= 0x40020414 | 0x1000;
 	*(unsigned int *) 0x40020414 &= ~(E_LCD_Pin);
 	HAL_Delay(1);
-
-	// Enable
-	//*(unsigned int *) ((uint32_t)E_LCD_GPIO_Port + 0x14) |= ((uint32_t)E_LCD_GPIO_Port + 0x14) & ~E_LCD_Pin;
-
-
-
 #else
 	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 1);
 	HAL_Delay(1);
@@ -118,11 +107,9 @@ void lcd_disable(void)
 void lcd_data(uint8_t data)
 {
 	//HAL_GPIO_WritePin(RS_LCD_GPIO_Port, RS_LCD_Pin, 1); // RS=1 for data mode
-	//*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x0800;
 	*(unsigned int *) 0x40020414 |= RS_LCD_Pin; //
 
 	//HAL_GPIO_WritePin(RW_LCD_GPIO_Port, RW_LCD_Pin, 0);
-	//*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x0400;
 	*(unsigned int *) 0x40020414 &= ~(RW_LCD_Pin); //
 
 	lcd_enable();
@@ -217,12 +204,10 @@ void lcd_data(uint8_t data)
 void lcd_command(uint8_t cmd)
 {
 	//HAL_GPIO_WritePin(RS_LCD_GPIO_Port, RS_LCD_Pin, 0); // RS= for command mode
-	//*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x0800;
 	*(unsigned int *) 0x40020414 &= ~(RS_LCD_Pin); //
 
 	//HAL_GPIO_WritePin(RW_LCD_GPIO_Port, RW_LCD_Pin, 0);
-	//*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x0400;
-	*(unsigned int *) 0x40020414 &= ~(RS_LCD_Pin); //
+	*(unsigned int *) 0x40020414 &= ~(RW_LCD_Pin); //
 
 	lcd_enable();
 

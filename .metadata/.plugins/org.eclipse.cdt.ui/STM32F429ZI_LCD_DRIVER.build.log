@@ -1,33 +1,10 @@
-09:42:14 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
+13:19:02 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD_DRIVER ****
 make -j9 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:187:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  187 |  printf("HELLO\n");
-      |  ^~~~~~
-../Core/Src/main.c:187:2: warning: incompatible implicit declaration of built-in function 'printf'
-../Core/Src/main.c:30:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   29 | #include "ds1302.h"
-  +++ |+#include <stdio.h>
-   30 | /* USER CODE END Includes */
-At top level:
-../Core/Src/main.c:290:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
-  290 | static void MX_ETH_Init(void)
-      |             ^~~~~~~~~~~
-arm-none-eabi-gcc -o "STM32F429ZI_LCD_DRIVER.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD_DRIVER/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD_DRIVER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STM32F429ZI_LCD_DRIVER.elf
- 
 arm-none-eabi-size   STM32F429ZI_LCD_DRIVER.elf 
-arm-none-eabi-objdump -h -S  STM32F429ZI_LCD_DRIVER.elf  > "STM32F429ZI_LCD_DRIVER.list"
-arm-none-eabi-objcopy  -O binary  STM32F429ZI_LCD_DRIVER.elf  "STM32F429ZI_LCD_DRIVER.bin"
    text	   data	    bss	    dec	    hex	filename
   48260	    544	  22984	  71788	  1186c	STM32F429ZI_LCD_DRIVER.elf
 Finished building: default.size.stdout
  
-Finished building: STM32F429ZI_LCD_DRIVER.bin
- 
-Finished building: STM32F429ZI_LCD_DRIVER.list
- 
 
-09:42:14 Build Finished. 0 errors, 3 warnings. (took 706ms)
+13:19:02 Build Finished. 0 errors, 0 warnings. (took 172ms)
 
