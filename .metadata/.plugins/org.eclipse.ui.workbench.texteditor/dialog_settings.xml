@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="TIM4_ds1302_sec_counter"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="TIM11_ds1302_sec_counter"/>
+			<item value="TIM11"/>
+			<item value="TIM4"/>
+			<item value="input"/>
+			<item value="TIM10_ds1302_sec_counter"/>
+			<item value="TIM10_ds1302_1ms_counter"/>
+			<item value="ds1302_rx_1"/>
+			<item value="ds1302_rx"/>
+			<item value="void ds1302_init_time_date(void);&#x0A;void ds1302_write(uint8_t addr, uint8_t data);&#x0A;void ds1302_set_time(void);&#x0A;void ds1302_main(void);&#x0A;void ds1302_DataLine_Output(void);&#x0A;void ds1302_DataLine_Input(void);&#x0A;void ds1302_clock(void);&#x0A;void ds1302_init_gpio_low(void);&#x0A;uint8_t ds1302_read(uint8_t addr);&#x0A;void ds1302_tx(uint8_t tx);&#x0A;void ds1302_rx(char *data8);&#x0A;void ds1302_read_time(void);&#x0A;void ds1302_read_date(void);&#x0A;void ds1302_flash_clock(void);"/>
+			<item value="RW_Pin"/>
+			<item value="RW_GPIO_Port"/>
+			<item value="RS_Pin"/>
+			<item value="RS_GPIO_Port"/>
+			<item value="D7_GPIO_Port"/>
+			<item value="D6_GPIO_Port"/>
+		</list>
+		<list key="replacehistory">
+			<item value="TIM4_ds1302_sec_counter"/>
+			<item value="input_buff"/>
+			<item value="TIM11_ds1302_sec_counter"/>
+			<item value="TIM11_ds1302_1ms_counter"/>
+			<item value="TIM10_ds1302_sec_counter"/>
+			<item value="ds1302_rx"/>
+			<item value="ds1302_rx_1"/>
+			<item value="RW_LCD_Pin"/>
+			<item value="RW_LCD_GPIO_Port"/>
+			<item value="RS_LCD_Pin"/>
+			<item value="RS_LCD_GPIO_Port"/>
+			<item value="D7_LCD_GPIO_Port"/>
+			<item value="D6_LCD_GPIO_Port"/>
+			<item value="D5_LCD_GPIO_Port"/>
+			<item value="D4_LCD_GPIO_Port"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1300"/>
+		<item key="DIALOG_Y_ORIGIN" value="338"/>
+		<item key="DIALOG_WIDTH" value="292"/>
+		<item key="DIALOG_HEIGHT" value="402"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
+</section>

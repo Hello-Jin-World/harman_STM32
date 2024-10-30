@@ -1,0 +1,15 @@
+#include "lcd_datasheet.h"
+
+void all_init(void)
+{
+	*(unsigned int *) 0x40020414 |= 0x0800; // RS HIGH SET
+	*(unsigned int *) 0x40020414 &= ~0x0400; // RW LOW SET
+	*(unsigned int *) 0x40021014 |= 0x8000; // ENABLE HIGH SET
+}
+
+void send_data(void)
+{
+
+}
+
+*(unsigned int *) 0x40020414 |= o

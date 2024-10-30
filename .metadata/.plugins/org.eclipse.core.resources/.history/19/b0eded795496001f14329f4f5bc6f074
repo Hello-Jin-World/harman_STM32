@@ -1,0 +1,282 @@
+#if 0
+
+#include "calculator_JJ.h"
+#include "button.h"
+#include "circularQueue.h"
+#include <string.h> // strcpy strncmp 등
+#include <stdlib.h> // atoi itoa 함수등
+
+Queue keypad_queue;
+Stack operatorStack;
+
+void initStack(Stack* s);
+extern volatile int TIM11_CAL_counter;
+extern uint8_t QIsEmpty(Queue* pq);
+uint8_t data;
+void calculator_main(void);
+
+char lcd_buff[40];
+char cal_buff[40];
+char postfix[256];
+
+int enter_plag = 0;
+int result_plag = 0;
+int lcd_index = 0;
+double result = 0.0;
+int lcd_clear = 0; // 다음 입력 시 LCD 초기화를 위한 플래그
+int right = 0;
+int left = 0;
+int division_error = 0;
+
+// Stack 정의
+void initStack(Stack* s)
+{
+    s->top = -1;
+}
+
+int isStackEmpty(Stack* s)
+{
+    return s->top == -1;
+}
+
+int isStackFull(Stack* s)
+{
+    return s->top == 39;
+}
+
+void push(Stack* s, double value)
+{
+    if (!isStackFull(s))
+    {
+        s->items[++(s->top)] = value;
+    }
+    else
+    {
+        printf("Stack overflow error\n");
+    }
+}
+
+double pop(Stack* s)
+{
+    return isStackEmpty(s) ? 0.0 : s->items[(s->top)--];
+}
+
+double peek(Stack* s)
+{
+    return isStackEmpty(s) ? 0.0 : s->items[s->top];
+}
+int precedence(char op)
+{
+    if (op == '(') return 0;
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    return 3;
+}
+
+// 중위 -> 후위 변환
+void infixToPostfix(char* infix, char* postfix)
+{
+    int i = 0, j = 0;
+    initStack(&operatorStack);
+
+    while (infix[i] != '=' && infix[i] != '\0')
+    {
+        if (isdigit(infix[i])) // 숫자 구분
+        {
+            while (isdigit(infix[i]))
+            {
+                postfix[j++] = infix[i++]; // 후위 변환에 넣음
+            }
+            postfix[j++] = ' '; // 피연산자 구분
+        }
+        else if (infix[i] == '(')
+        {
+            push(&operatorStack, infix[i++]);
+        }
+        else if (infix[i] == ')')
+        {
+            while (!isStackEmpty(&operatorStack) && peek(&operatorStack) != '(')
+            {
+                postfix[j++] = pop(&operatorStack);//'('가 올떄까지 후위 변환에 넣음
+                postfix[j++] = ' ';
+            }
+            pop(&operatorStack);//'('제거
+            i++;
+        }
+        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/')
+        {
+            while (!isStackEmpty(&operatorStack) && precedence(peek(&operatorStack)) >= precedence(infix[i]))
+            {
+                postfix[j++] = pop(&operatorStack);
+                postfix[j++] = ' ';
+            }
+            push(&operatorStack, infix[i++]); // 현재 연산자를 넣음
+        }
+    }
+
+    while (!isStackEmpty(&operatorStack))//남은 모든 연산자를 후위 변환에 넣음
+    {
+        postfix[j++] = pop(&operatorStack);
+        postfix[j++] = ' ';
+    }
+    postfix[j] = '\0';
+    printf("Postfix Expression: %s\n", postfix);
+}
+
+// 후위 표기법 계산
+double evaluatePostfix(char* postfix)
+{
+    Stack evalStack;
+    initStack(&evalStack);
+    int i = 0;
+    double operand = 0.0; // 256이상의 값을 표시하기 위해
+
+    while (postfix[i] != '\0') // 문자열 끝까지 반복
+    {
+        if (isdigit(postfix[i]) || postfix[i] == '.') // 숫자 또는 소수점 처리
+        {
+            operand = 0.0; // 새로운 숫자 시작
+            int decimalFlag = 0; // 소수점 확인
+            double decimalPlace = 0.1; // 소수점 자리 관리
+
+            while (isdigit(postfix[i]) || postfix[i] == '.')
+            {
+                if (postfix[i] == '.')//소수점 발결
+                {
+                    decimalFlag = 1; // 소수점 이후 처리
+                    i++;
+                }
+                else if (!decimalFlag)//정수 처리
+                {
+                    operand = operand * 10 + (postfix[i++] - '0'); // 문자열을 숫자로
+                }
+                else
+                {
+                    operand += (postfix[i++] - '0') * decimalPlace;
+                    decimalPlace /= 10;
+                }
+            }
+            push(&evalStack, operand);// 완성된 피연산자 스택에 넣음
+        }
+        else if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/')
+        {
+            double b = pop(&evalStack);
+            double a = pop(&evalStack);
+            switch (postfix[i])
+            {
+                case '+': push(&evalStack, a + b); break;
+                case '-': push(&evalStack, a - b); break;
+                case '*': push(&evalStack, a * b); break;
+                case '/':
+                    if (b != 0)
+                    	{
+                    		push(&evalStack, a / b);
+                    	}
+                    else
+                    {
+                    	printf("zero error\n");
+                    	division_error = 1;
+        				return 0;
+                    }
+                    break;
+            }
+            i++;
+        }
+        else
+        {
+        	i++;
+        }
+    }
+    return pop(&evalStack);
+}
+
+void calculator_main(void)
+{
+    if (QIsEmpty(&keypad_queue) != TRUE)
+    {
+    	enter_plag = 1;
+        data = Dequeue(&keypad_queue);
+
+        if (lcd_clear) // 결과 표시 후 새 입력이 들어오면 LCD 초기화
+        {
+            move_cursor(0, 0);
+            lcd_string("                    "); // LCD 화면 초기화
+            lcd_index = 0;
+            lcd_clear = 0;
+        }
+
+        sprintf(cal_buff, "%c", data);
+//        move_cursor(0, lcd_index);
+//        lcd_string(cal_buff);
+        lcd_buff[lcd_index++] = data;
+
+        if (data == '=')
+        {
+        	result_plag = 1;
+            lcd_buff[lcd_index - 1] = '\0'; // '='를 제외하고 수식 저장
+
+            infixToPostfix(lcd_buff, postfix);
+            result = evaluatePostfix(postfix);
+
+            printf("result: %.2f\n", result);
+
+            if (right != left || division_error)
+            {
+				move_cursor(1, 0); // 오류 메시지가 LCD의 두 번째 줄 맨 앞에 표시되도록 설정
+				lcd_string("result: error"); // "error"를 출력
+				division_error = 0;
+            }
+            else
+            {
+				sprintf(cal_buff, "%.2f", result);
+				move_cursor(1, 0);
+				lcd_string("result: ");
+				lcd_string(cal_buff);
+            }
+
+            lcd_clear = 1; // 다음 입력 시 LCD 초기화
+            right = 0;
+            left = 0;
+            lcd_index = 0; // 다음 계산을 위한 초기화
+
+        }
+    }
+    if (get_button(GPIOC, GPIO_PIN_8, BUTTON0) == BUTTON_PRESS) // '(' 버튼
+    {
+    	enter_plag = 1;
+        if (lcd_clear) // 결과 표시 후 새 입력이 들어오면 LCD 초기화
+        {
+            move_cursor(0, 0);
+            lcd_string("                    "); // LCD 화면 초기화
+            lcd_index = 0;
+            lcd_clear = 0; // 초기화 플래그 해제
+        }
+
+        sprintf(cal_buff, "%c", '(');
+        move_cursor(0, lcd_index);
+        lcd_string(cal_buff);
+        lcd_buff[lcd_index++] = '(';
+        right++;
+
+    }
+
+    if (get_button(GPIOC, GPIO_PIN_9, BUTTON1) == BUTTON_PRESS) // ')' 버튼
+    {
+    	enter_plag = 1;
+        if (lcd_clear)
+        {
+            move_cursor(0, 0);
+            lcd_string("                    "); // LCD 화면 초기화
+            lcd_index = 0;
+            lcd_clear = 0; // 초기화 플래그 해제
+        }
+
+        sprintf(cal_buff, "%c", ')');
+        move_cursor(0, lcd_index);
+        lcd_string(cal_buff);
+        lcd_buff[lcd_index++] = ')';
+        left++;
+    }
+}
+
+#endif

@@ -1,0 +1,5 @@
+#include "main.h"
+
+void all_init(void);
+void send_data(void);
+void clear_lcd(void);

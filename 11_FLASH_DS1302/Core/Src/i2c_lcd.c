@@ -11,8 +11,13 @@
 #include <stdio.h>
 #include "i2c_lcd.h"
 
-extern TIM_HandleTypeDef htim2;
 extern I2C_HandleTypeDef hi2c1;
+
+extern int enter_plag;
+extern int result_plag;
+
+extern char input[100];
+extern int num;
 
 void i2c_lcd_main(void);
 void i2c_lcd_init(void);

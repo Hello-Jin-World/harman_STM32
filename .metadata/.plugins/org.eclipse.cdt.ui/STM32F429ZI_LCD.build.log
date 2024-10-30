@@ -1,0 +1,13 @@
+00:32:09 **** Incremental Build of configuration Debug for project STM32F429ZI_LCD ****
+make -j9 all 
+arm-none-eabi-gcc -o "STM32F429ZI_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F429ZI_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `StartDefaultTask':
+/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD/Debug/../Core/Src/main.c:600: undefined reference to `lcd_clock_cal'
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.macos64_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `StartTask01':
+/Users/parkseongjin/harman_STM32/STM32F429ZI_LCD/Debug/../Core/Src/main.c:621: undefined reference to `toggle_clock_cal'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:69: STM32F429ZI_LCD.elf] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+
+00:32:09 Build Failed. 5 errors, 0 warnings. (took 460ms)
+

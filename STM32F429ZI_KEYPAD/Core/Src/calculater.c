@@ -101,11 +101,6 @@ void in_to_post(char* infix, char* postfix)
 		{
 			push(&s, *infix);
 			infix++;
-			if (strstr(infix, ')') != 1)
-			{
-				printf("There is no ( or )!!!\n");
-				break;
-			}
 		}
 		else if (*infix == ')')
 		{
@@ -117,11 +112,6 @@ void in_to_post(char* infix, char* postfix)
 			if (!is_empty(&s) && peek(&s) == '(')
 				pop(&s);
 
-			else
-			{
-				printf("There is no ( or )!!!\n");
-				break;
-			}
 
 			infix++;
 
@@ -313,6 +303,9 @@ void get_mathequation(void)
 			in_to_post(input, postfix);
 			calculator_stm(postfix);
 			printf("Postfix result : %s\n", postfix);
+
+			memset(input, 0, sizeof(input));
+						input_index = 0;
 		}
 
 	}

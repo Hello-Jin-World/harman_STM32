@@ -1,0 +1,4 @@
+#include "main.h"
+
+void all_init(void);
+void send_data(void);

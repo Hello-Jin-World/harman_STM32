@@ -1,0 +1,172 @@
+#include "main.h"
+#include "stm32f4xx_hal.h"
+#include <string.h>
+#include <stdio.h>
+#include "i2c_lcd.h"
+
+void lcd_enable(void);
+void lcd_disable(void);
+void lcd_data(uint8_t data);
+void lcd_command(uint8_t cmd);
+void i2c_lcd_init(void);
+void lcd_string(uint8_t *str);
+void move_cursor(uint8_t row, uint8_t column);
+void i2c_lcd_main(void);
+
+extern volatile int TIM11_sec_counter;
+
+void lcd_enable(void)
+{
+#if 1
+	// Enable
+	*(unsigned int *) 0x40020414 |= 0x40020414 & ~0x1000;
+	*(unsigned int *) 0x40020414 |= 0x1000;
+	HAL_Delay(1);
+
+	// Disable
+	//*(unsigned int *) ((uint32_t)E_LCD_GPIO_Port + 0x14) |= ((uint32_t)E_LCD_GPIO_Port + 0x14) & ~E_LCD_Pin;
+	*(unsigned int *)((uint32_t)E_LCD_GPIO_Port + 0x14) &= ~E_LCD_Pin;
+	HAL_Delay(1);
+#else
+	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 0);
+	HAL_Delay(1);
+	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 1);
+	HAL_Delay(1);
+#endif
+}
+
+void lcd_disable(void)
+{
+#if 1
+	// Disable
+	*(unsigned int *) ((uint32_t)E_LCD_GPIO_Port + 0x14) |= ((uint32_t)E_LCD_GPIO_Port + 0x14) & ~E_LCD_Pin;
+	*(unsigned int *)((uint32_t)E_LCD_GPIO_Port + 0x14) &= ~E_LCD_Pin;
+
+	HAL_Delay(1);
+	// Enable
+	//*(unsigned int *) ((uint32_t)E_LCD_GPIO_Port + 0x14) |= ((uint32_t)E_LCD_GPIO_Port + 0x14) & ~E_LCD_Pin;
+	*(unsigned int *)((uint32_t)E_LCD_GPIO_Port + 0x14) |= E_LCD_Pin;
+	HAL_Delay(1);
+
+
+#else
+	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 1);
+	HAL_Delay(1);
+	HAL_GPIO_WritePin(E_LCD_GPIO_Port, E_LCD_Pin, 0);
+	HAL_Delay(1);
+#endif
+}
+
+void lcd_data(uint8_t data)
+{
+	//HAL_GPIO_WritePin(RS_LCD_GPIO_Port, RS_LCD_Pin, 1); // RS=1 for data mode
+	*(unsigned int *) ((uint32_t)RS_LCD_GPIO_Port + 0x14) |= ((uint32_t)RS_LCD_GPIO_Port + 0x14) & ~RS_LCD_Pin;
+	*(unsigned int *)((uint32_t)RS_LCD_GPIO_Port + 0x14) |= RS_LCD_Pin; //
+
+
+	//HAL_GPIO_WritePin(RW_LCD_GPIO_Port, RW_LCD_Pin, 0);
+	*(unsigned int *) ((uint32_t)RW_LCD_GPIO_Port + 0x14) |= ((uint32_t)RW_LCD_GPIO_Port + 0x14) & ~RW_LCD_Pin;
+	*(unsigned int *)((uint32_t)RW_LCD_GPIO_Port + 0x14) &= ~RW_LCD_Pin;
+
+
+
+	lcd_enable();
+
+	// 데이터 전송 (8비트)
+	HAL_GPIO_WritePin(D0_LCD_GPIO_Port, D0_LCD_Pin, (data & 0x01) ? 1 : 0);
+	HAL_GPIO_WritePin(D1_LCD_GPIO_Port, D1_LCD_Pin, (data & 0x02) ? 1 : 0);
+	HAL_GPIO_WritePin(D2_LCD_GPIO_Port, D2_LCD_Pin, (data & 0x04) ? 1 : 0);
+	HAL_GPIO_WritePin(D3_LCD_GPIO_Port, D3_LCD_Pin, (data & 0x08) ? 1 : 0);
+	HAL_GPIO_WritePin(D4_LCD_GPIO_Port, D4_LCD_Pin, (data & 0x10) ? 1 : 0);
+	HAL_GPIO_WritePin(D5_LCD_GPIO_Port, D5_LCD_Pin, (data & 0x20) ? 1 : 0);
+	HAL_GPIO_WritePin(D6_LCD_GPIO_Port, D6_LCD_Pin, (data & 0x40) ? 1 : 0);
+	HAL_GPIO_WritePin(D7_LCD_GPIO_Port, D7_LCD_Pin, (data & 0x80) ? 1 : 0);
+
+	lcd_disable();
+}
+
+void lcd_command(uint8_t cmd)
+{
+	//HAL_GPIO_WritePin(RS_LCD_GPIO_Port, RS_LCD_Pin, 0); // RS= for command mode
+	*(unsigned int *) ((uint32_t)RS_LCD_GPIO_Port + 0x14) |= ((uint32_t)RS_LCD_GPIO_Port + 0x14) & ~RS_LCD_Pin;
+	*(unsigned int *)((uint32_t)RS_LCD_GPIO_Port + 0x14) &= ~RS_LCD_Pin;
+
+	//HAL_GPIO_WritePin(RW_LCD_GPIO_Port, RW_LCD_Pin, 0);
+	*(unsigned int *) ((uint32_t)RW_LCD_GPIO_Port + 0x14) |= ((uint32_t)RW_LCD_GPIO_Port + 0x14) & ~RW_LCD_Pin;
+	*(unsigned int *)((uint32_t)RW_LCD_GPIO_Port + 0x14) &= ~RW_LCD_Pin;
+
+	lcd_enable();
+
+	// 데이터 전송 (8비트)
+	HAL_GPIO_WritePin(D0_LCD_GPIO_Port, D0_LCD_Pin, (cmd & 0x01) ? 1 : 0);
+	HAL_GPIO_WritePin(D1_LCD_GPIO_Port, D1_LCD_Pin, (cmd & 0x02) ? 1 : 0);
+	HAL_GPIO_WritePin(D2_LCD_GPIO_Port, D2_LCD_Pin, (cmd & 0x04) ? 1 : 0);
+	HAL_GPIO_WritePin(D3_LCD_GPIO_Port, D3_LCD_Pin, (cmd & 0x08) ? 1 : 0);
+	HAL_GPIO_WritePin(D4_LCD_GPIO_Port, D4_LCD_Pin, (cmd & 0x10) ? 1 : 0);
+	HAL_GPIO_WritePin(D5_LCD_GPIO_Port, D5_LCD_Pin, (cmd & 0x20) ? 1 : 0);
+	HAL_GPIO_WritePin(D6_LCD_GPIO_Port, D6_LCD_Pin, (cmd & 0x40) ? 1 : 0);
+	HAL_GPIO_WritePin(D7_LCD_GPIO_Port, D7_LCD_Pin, (cmd & 0x80) ? 1 : 0);
+
+	lcd_disable();
+}
+
+void i2c_lcd_init(void)
+{
+	HAL_Delay(15);          // 안정화 대기
+	lcd_command(0x38);      // 8비트 모드, 2 라인, 5x8 폰트
+	HAL_Delay(5);           // 추가 대기 시간
+	lcd_command(0x38);
+	HAL_Delay(1);
+	lcd_command(0x38);
+
+	lcd_command(0x0C);      // 디스플레이 ON, 커서 OFF, 커서 깜빡임 꺼짐
+	lcd_command(0x06);      // 자동 커서 이동 (오른쪽으로)
+	lcd_command(0x01);      // 디스플레이 클리어
+	HAL_Delay(2);           // 클리어 대기
+}
+
+void lcd_string(uint8_t *str)
+{
+	while (*str)
+	{
+		lcd_data(*str++);
+	}
+}
+
+void move_cursor(uint8_t row, uint8_t column)
+{
+	lcd_command(0x80 | (row << 6) | column);
+}
+
+void i2c_lcd_main(void)
+{
+#if 1
+	static uint8_t value = 0;
+
+	move_cursor(0, 0);
+	lcd_string((uint8_t *)"Hello World!!!");
+	move_cursor(1, 0);
+	lcd_data(value + '0');
+
+	if (TIM11_sec_counter >= 1)
+	{
+		TIM11_sec_counter = 0;
+		value++;
+		value %= 10;
+	}
+#else
+	uint8_t value = 0;
+	i2c_lcd_init();
+
+	while (1)
+	{
+		move_cursor(0, 0);
+		lcd_string((uint8_t *)"Hello World!!!");
+		move_cursor(1, 0);
+		lcd_data(value + '0');
+		value++;
+		if (value > 9) value = 0;
+		HAL_Delay(500);
+	}
+#endif
+}
